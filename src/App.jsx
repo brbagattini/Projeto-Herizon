@@ -21,7 +21,19 @@ function App() {
         <a href="" className='Perfil-Link'>perfil</a>
       </div>
     </nav>
-    <main>
+    <main className='IndexMain'>
+      <div className='Header'>
+        <a href=""><p>Avançar</p></a>
+      </div>
+        <div className='placa'>Placa das propagandas</div>
+        <div className='ultimoJogo'>Último jogo</div>
+        <div className='thumbnail'>Miniatura da partida</div>
+        <div className='liga'>Liga atual</div>
+        <div className='aoVivo'>Transmissão ao vivo</div>
+        <div className='partidaDestaque'>Partida de destaque</div>
+        <div className='proximasPartidas'>Próximas partidas</div>
+        <div className='video'>Vídeo da partida</div>
+        <div className='creditos'>Créditos</div>
     </main>
     </>
   )

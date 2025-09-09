@@ -79,4 +79,83 @@ nav:last-child{
 main{
     height: 100%;
     width: 100%;
+    display: grid;
+    padding: 0% 5%;
+}
+.IndexMain{
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 0.25fr 1fr 0.5fr 1fr 1fr 0.25fr;
+    grid-template-areas: 
+    'header header header'
+    'ultimojogo Thumbnail placa'
+    'liga Thumbnail placa'
+    'liga partidas aovivo'
+    'Destaque partidas video'
+    'creditos partidas video';
+    justify-content: center;
+    align-items: center;
+}
+.creditos{
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
+    grid-area: creditos;
+    color: #000;
+}
+.video{
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
+    grid-area: video;
+    color: #000;
+}
+.ultimoJogo{
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
+    grid-area: ultimojogo;
+    color: #000;
+}
+.proximasPartidas{
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
+    grid-area: partidas;
+    color: #000;
+}
+.header{
+    grid-area: header;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+}
+.aoVivo{
+    grid-area: aovivo;
+    height: 100%;
+    width: 100%;
+    background-color: blueviolet;
+}
+.partidaDestaque{
+    grid-area: Destaque;
+    height: 100%;
+    width: 100%;
+    background-color: wheat;
+}
+.thumbnail{
+    grid-area: Thumbnail;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
+.placa{
+    grid-area: placa;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+}
+.liga{
+    grid-area: liga;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
 }
