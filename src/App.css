@@ -1,1 +1,82 @@
 @import "tailwindcss";
+:root{
+    --NavH: 4rem;
+    --asideW: 5rem;
+}
+#root{
+    background-color: #000;
+    color: white;
+    height: 100vh;
+    width: 100%;
+}
+*{
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    font-size: 16px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    background-color: #0d0d0d;
+    height: var(--NavH);
+}
+nav:last-child{
+    justify-content: start;
+}
+.Nav-Link{
+    margin: 0 1rem;
+    height: 100%;
+}
+.Nav-Link:hover{
+    background-color: azure;
+}
+.Nav-Link-Div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    gap: 2rem;
+}
+.BtnMenu{
+    width: var(--NavH);
+    height: var(--NavH);
+    border-right-width: 1px;
+    border-right-color: rgba(255, 255, 255, 0.2);
+}
+.search-bar-Div{
+    height: var(--NavH);
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar{
+    border-radius: 1rem;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    height: 2rem;
+    padding: 1rem;
+    width: 95%;
+}
+.PerfilDiv{
+    display: flex;
+    width: 20%;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: 18px;
+}
+.PerfilDiv img{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+}
+main{
+    height: 100%;
+    width: 100%;
+}
