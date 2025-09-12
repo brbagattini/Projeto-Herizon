@@ -1,15 +1,15 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import '../App.css'
 
 function Clubes() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
     <main className='SobreNosMain'>
       <div className='header'>
-        <a href=""><p>Voltar</p></a>
-        <a href=""><p>Avançar</p></a>
+        <a href="/"><p>Voltar</p></a>
+        <a href="/sobrenos"><p>Avançar</p></a>
       </div>
 
     </main>

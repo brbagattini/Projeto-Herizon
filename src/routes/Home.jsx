@@ -1,14 +1,14 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import '../App.css'
 
 function Home() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
     <main className='IndexMain'>
       <div className='header'>
-        <a href=""><p>Avançar</p></a>
+        <a href="/clubes"><p>Avançar</p></a>
       </div>
         <div className='placa'>Placa das propagandas</div>
         <div className='ultimoJogo'>Último jogo</div>

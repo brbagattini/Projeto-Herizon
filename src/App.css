@@ -41,14 +41,8 @@ nav:last-child{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 40%;
     gap: 2rem;
-}
-.BtnMenu{
-    width: var(--NavH);
-    height: var(--NavH);
-    border-right-width: 1px;
-    border-right-color: rgba(255, 255, 255, 0.2);
 }
 .search-bar-Div{
     height: var(--NavH);
