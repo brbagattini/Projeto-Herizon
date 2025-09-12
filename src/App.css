@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* #EE4D9B */
 :root{
     --NavH: 4rem;
     --asideW: 5rem;
@@ -23,7 +24,7 @@ nav{
     align-items: center;
     gap: 3rem;
     width: 100%;
-    background-color: #0d0d0d;
+    background-color: #262626;
     height: var(--NavH);
 }
 nav:last-child{
@@ -160,7 +161,27 @@ main{
     grid-area: Thumbnail;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-image: linear-gradient(to bottom right, #EE4D9B, white);
+    border-radius: 1rem;
+}
+.thumbnailtext{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.thumbnailtimeA, .thumbnailtimeB{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thumbnailtext img{
+    width: 5rem;
+    height: 5rem;
+}
+.thumbnailtext h1{
+    font-weight: bold;
+    font-size: 32px;
 }
 .placa{
     grid-area: placa;

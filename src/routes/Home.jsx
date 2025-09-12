@@ -12,10 +12,21 @@ function Home() {
       </div>
         <div className='placa'>Placa das propagandas</div>
         <div className='ultimoJogo'>Último jogo</div>
-        <div className='thumbnail'>Miniatura da partida</div>
+        <div className='thumbnail'>
+          <div className='thumbnailtext'>
+            <div className='thumbnailtimeA'>
+              <img src="" alt="" />
+              <h1>Barcelona</h1>
+            </div>
+            <h1>VS</h1>
+            <div className='thumbnailtimeB'>
+              <img src="" alt="" />
+              <h1>Barcelona</h1>
+            </div>
+          </div>
+        </div>
         <div className='liga'>Liga atual</div>
         <div className='aoVivo'></div>
-        <div className='partidaDestaque'>Partida de destaque</div>
         <div className='proximasPartidas'>Próximas partidas</div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/q8cwzzf35yI?si=1LAiKQeHISkXZBgR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen className='video'></iframe>
     </main>
