@@ -83,7 +83,21 @@ main{
     height: 100%;
     width: 100%;
     display: grid;
+    grid-gap: 0.5rem;
     padding: 0% 5%;
+}
+.SobreNosMain{
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 0.25fr 1fr 0.5fr 1fr 1fr 0.25fr;
+    grid-template-areas: 
+    'header header header'
+    'ultimojogo Thumbnail placa'
+    'liga Thumbnail placa'
+    'liga partidas aovivo'
+    'Destaque partidas video'
+    'creditos partidas video';
+    justify-content: center;
+    align-items: center;
 }
 .IndexMain{
     grid-template-columns: 1fr 3fr 1fr;
@@ -130,13 +144,17 @@ main{
     grid-area: header;
     height: 100%;
     width: 100%;
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 .aoVivo{
+    border-radius: 1rem;
     grid-area: aovivo;
     height: 100%;
     width: 100%;
-    background-color: blueviolet;
+    background-color: #fefefe;
+    border-width: 1px;
 }
 .partidaDestaque{
     grid-area: Destaque;
