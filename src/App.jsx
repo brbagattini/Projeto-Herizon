@@ -32,8 +32,7 @@ function App() {
         <div className='aoVivo'>Transmissão ao vivo</div>
         <div className='partidaDestaque'>Partida de destaque</div>
         <div className='proximasPartidas'>Próximas partidas</div>
-        <div className='video'>Vídeo da partida</div>
-        <div className='creditos'>Créditos</div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/q8cwzzf35yI?si=1LAiKQeHISkXZBgR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen className='video'></iframe>
     </main>
     </>
   )
