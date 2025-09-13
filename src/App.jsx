@@ -9,7 +9,7 @@ function App() {
     <div className='App'>
     <nav>
       <div className='Nav-Link-Div'>
-        <a href="/" className='Nav-Link'>Notícias</a>
+        <a href="/home" className='Nav-Link'>Notícias</a>
         <a href="/clubes" className='Nav-Link'>Atletas e Clubes</a>
         <a href="/sobrenos" className='Nav-Link'>História</a>
       </div>
@@ -18,7 +18,7 @@ function App() {
       </div>
       <div className='PerfilDiv'>
         <img src="" alt="" className='ImgPerfil'/>
-        <a href="" className='Perfil-Link'>perfil</a>
+        <a href="/" className='Perfil-Link'>perfil</a>
       </div>
     </nav>
       <Outlet></Outlet>

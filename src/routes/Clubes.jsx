@@ -8,7 +8,7 @@ function Clubes() {
     <>
     <main className='ClubeMain'>
       <div className='header'>
-        <a href="/"><p>Voltar</p></a>
+        <a href="/home"><p>Voltar</p></a>
         <a href="/sobrenos"><p>Avançar</p></a>
       </div>
       <div className='ThumbnailJogadoras'>
