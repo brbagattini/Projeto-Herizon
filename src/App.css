@@ -244,5 +244,50 @@ main{
     grid-area: liga;
     height: 100%;
     width: 100%;
-    background-color: blue;
+    background-color: #101010;
+    color: #606060;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 0.1rem;
+    border-radius: 1rem;
+    padding-top: 1rem;
+    border-color: #565656;
+}
+.liga .Pontos{
+    color: white;
+    font-weight: bold;
+}
+.liga p{
+    font-size: 12px;
+}
+
+.LegendaLiga {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 5fr repeat(8, 1fr);
+    align-items: center;
+    border-bottom-width: 1px;
+    border-bottom-color: #565656;
+}
+
+.LegendaLiga p {
+    margin: 0;
+    text-align: center;
+    background-color: transparent;
+}
+.LegendaLiga img{
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+}
+.LegendaLiga .Clube{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+}
+.LegendaLiga p:first-child {
+    text-align: left;
+    padding-left: .5rem;
 }

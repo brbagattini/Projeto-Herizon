@@ -35,7 +35,33 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className='liga'>Liga atual</div>
+        <div className='liga'>
+          <div className='LegendaLiga'>
+            <p>Clubes</p>
+            <p className='Pontos'>Pts</p>
+            <p>Pj</p>
+            <p>V</p>
+            <p>E</p>
+            <p>D</p>
+            <p>GM</p>
+            <p>GC</p>
+            <p>SG</p>
+          </div>
+          <div className='LegendaLiga'>
+            <div className='Clube'>
+              <img src="" alt="" />
+              <p>Barcelona</p>
+            </div>
+            <p className='Pontos'>43</p>
+            <p>43</p>
+            <p>43</p>
+            <p>43</p>
+            <p>43</p>
+            <p>2</p>
+            <p>4</p>
+            <p>4</p>
+          </div>
+        </div>
         <div className='aoVivo'></div>
         <div className='proximasPartidas'>Próximas partidas</div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/q8cwzzf35yI?si=1LAiKQeHISkXZBgR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen className='video'></iframe>
