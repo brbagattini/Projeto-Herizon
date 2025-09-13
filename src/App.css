@@ -34,9 +34,6 @@ nav:last-child{
     margin: 0 1rem;
     height: 100%;
 }
-.Nav-Link:hover{
-    background-color: azure;
-}
 .Nav-Link-Div{
     display: flex;
     flex-direction: row;
@@ -161,8 +158,13 @@ main{
     grid-area: Thumbnail;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to bottom right, #EE4D9B, white);
+    background-color: #EE4D9B;
     border-radius: 1rem;
+    gap: 15%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .thumbnailtext{
     display: flex;
@@ -174,6 +176,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 .thumbnailtext img{
     width: 5rem;
@@ -183,6 +186,54 @@ main{
     font-weight: bold;
     font-size: 32px;
 }
+.thumbnailtext h2{
+    font-weight: bold;
+    font-size: 18px;
+}
+.informacoes{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 1rem;
+}
+.informacoes img{
+    width: 18px;
+    height: 18px;
+}
+.informacoes div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.thumbnailtabela{
+    background-color: #262626;
+    width:30%;
+    
+}
+.postime{
+    display: flex;
+    align-items: center;
+}
+.postime .posicao{
+    padding: 0 0.5rem;
+    border-left-width: 3px;
+    border-left-color: aqua;
+    border-right-width: 1px;
+    border-right-color: #565656;
+    justify-self: center;
+}
+.postime .time{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+}
+.postime .time img{
+    width: 18px;
+    height: 18px;
+}
+
 .placa{
     grid-area: placa;
     height: 100%;

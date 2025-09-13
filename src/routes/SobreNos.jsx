@@ -10,7 +10,6 @@ function SobreNos() {
       <div className='header'>
         <a href="/clubes"><p>Voltar</p></a>
       </div>
-
     </main>
     </>
   )

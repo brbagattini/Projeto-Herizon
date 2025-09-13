@@ -11,7 +11,6 @@ function Clubes() {
         <a href="/"><p>Voltar</p></a>
         <a href="/sobrenos"><p>Avançar</p></a>
       </div>
-
     </main>
     </>
   )

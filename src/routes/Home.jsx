@@ -17,11 +17,21 @@ function Home() {
             <div className='thumbnailtimeA'>
               <img src="" alt="" />
               <h1>Barcelona</h1>
+              <h2>VS</h2>
             </div>
-            <h1>VS</h1>
             <div className='thumbnailtimeB'>
-              <img src="" alt="" />
               <h1>Barcelona</h1>
+              <img src="" alt="" />
+            </div>
+            <div className='informacoes'>
+              <div className='Local'>
+                <img src="" alt="" />
+                <p>Morumbi</p>
+              </div>
+              <div className='Hora'>
+                <img src="" alt="" />
+                <p>Morumbi</p>
+              </div>
             </div>
           </div>
         </div>
