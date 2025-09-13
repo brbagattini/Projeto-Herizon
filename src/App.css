@@ -1,298 +1,335 @@
 @import "tailwindcss";
 /* #EE4D9B */
-:root{
-    --NavH: 4rem;
-    --asideW: 5rem;
-}
-#root{
-    background-color: #000;
-    color: white;
-    height: 100vh;
-    width: 100%;
-}
-*{
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    font-size: 16px;
-}
-body{
-    background-color: #000;
-}
-nav{
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-    background-color: #262626;
-    height: var(--NavH);
-}
-nav:last-child{
-    justify-content: start;
-}
-.Nav-Link{
-    margin: 0 1rem;
-    height: 100%;
-}
-.Nav-Link-Div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-    gap: 2rem;
-}
-.search-bar-Div{
-    height: var(--NavH);
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.search-bar{
-    border-radius: 1rem;
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.2);
-    height: 2rem;
-    padding: 1rem;
-    width: 95%;
-}
-.PerfilDiv{
-    display: flex;
-    width: 20%;
-    justify-content: start;
-    align-items: center;
-    gap: 1rem;
-    font-weight: bold;
-    font-size: 18px;
-}
-.PerfilDiv img{
-    height: 3rem;
-    width: 3rem;
-    border-radius: 100%;
-}
-main{
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-gap: 0.5rem;
-    padding: 0% 5%;
-}
-.SobreNosMain{
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 0.25fr 1fr 0.5fr 1fr 1fr 0.25fr;
-    grid-template-areas: 
-    'header header header'
-    'ultimojogo Thumbnail placa'
-    'liga Thumbnail placa'
-    'liga partidas aovivo'
-    'Destaque partidas video'
-    'creditos partidas video';
-    justify-content: center;
-    align-items: center;
-}
-.IndexMain{
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 0.25fr 1fr 0.5fr 1fr 1fr 0.25fr;
-    grid-template-areas: 
-    'header header header'
-    'ultimojogo Thumbnail placa'
-    'liga Thumbnail placa'
-    'liga partidas aovivo'
-    'Destaque partidas video'
-    'creditos partidas video';
-    justify-content: center;
-    align-items: center;
-}
-.creditos{
-    background-color: aqua;
-    height: 100%;
-    width: 100%;
-    grid-area: creditos;
-    color: #000;
-}
-.video{
-    height: 100%;
-    width: 100%;
-    grid-area: video;
-    color: #000;
-    border-radius: 1rem;
-}
-.ultimoJogo{
-    background-color: aqua;
-    height: 100%;
-    width: 100%;
-    grid-area: ultimojogo;
-    color: #000;
+/* =========================
+   Design tokens / base
+========================= */
+:root {
+  --nav-h: 4rem;
+  --aside-w: 5rem;
+
+  --clr-bg: #000;
+  --clr-surface: #262626;
+  --clr-panel: #101010;
+  --clr-text: #fff;
+  --clr-muted: #606060;
+  --clr-border: #565656;
+
+  --radius: 1rem;
+  --gap: .5rem;
+  --space-1: .5rem;
+  --space-2: 1rem;
 }
 
-/* Proximas Partidas */
+/* Reset mínimo e padrões */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-.proximasPartidas{
-    height: 100%;
-    width: 100%;
-    grid-area: partidas;
-    color: #000;
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  background: var(--clr-bg);
+  color: var(--clr-text);
 }
-.proximascontainer{
-    background-color: #262626;
-    width: 100%;
-    height: 5.5rem;
-    border-radius: 1rem;
-    padding: 0.5rem;
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* Root app container */
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
-.clubeproximas{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    gap: 2rem;
+
+/* =========================
+   Navegação (header)
+========================= */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+  width: 100%;
+  height: var(--nav-h);
+  background: var(--clr-surface);
 }
-.clubeproximas img{
-    height: 3rem;
-    width: 3rem;
+
+.Nav-Link { height: 100%; margin: 0 1rem; }
+
+.Nav-Link-Div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  width: 40%;
 }
-.header{
-    grid-area: header;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+
+.search-bar-Div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: var(--nav-h);
 }
-.aoVivo{
-    border-radius: 1rem;
-    grid-area: aovivo;
-    height: 100%;
-    width: 100%;
-    background-color: #fefefe;
-    border-width: 1px;
+
+.search-bar {
+  width: 95%;
+  height: 2rem;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
 }
-.partidaDestaque{
-    grid-area: Destaque;
-    height: 100%;
-    width: 100%;
-    background-color: wheat;
+
+.PerfilDiv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 20%;
+  font-weight: 700;
+  font-size: 1.125rem; /* 18px */
+}
+
+.PerfilDiv img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+/* =========================
+   Layout principal
+========================= */
+main {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  gap: var(--gap);
+  padding: 0 5%;
+}
+
+.IndexMain {
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: .25fr 1fr .5fr 1fr 1fr .25fr;
+  grid-template-areas:
+    "header    header    header"
+    "ultimojogo Thumbnail placa"
+    "liga      Thumbnail placa"
+    "liga      partidas  aovivo"
+    "Destaque  partidas  video"
+    "creditos  partidas  video";
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   Blocos / cards
+========================= */
+.video {
+  grid-area: video;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  border-radius: var(--radius);
+}
+
+.ultimoJogo {
+  grid-area: ultimojogo;
+  width: 100%;
+  height: 100%;
+  background: aqua;
+  color: #000;
+}
+
+/* Próximas Partidas */
+.proximasPartidas {
+  grid-area: partidas;
+  width: 100%;
+  height: 100%;
+  color: #000;
+}
+
+.proximascontainer {
+  width: 100%;
+  height: 5.5rem;
+  padding: .5rem;
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+}
+
+.clubeproximas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-left: 1rem;
+}
+
+.clubeproximas img { width: 3rem; height: 3rem; }
+
+.aoVivo {
+  grid-area: aovivo;
+  width: 100%;
+  height: 100%;
+  background: #fefefe;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+}
+
+.partidaDestaque {
+  grid-area: Destaque;
+  width: 100%;
+  height: 100%;
+  background: wheat;
 }
 
 /* Thumbnail */
-
-.thumbnail{
-    grid-area: Thumbnail;
-    height: 100%;
-    width: 100%;
-    background-color: #EE4D9B;
-    border-radius: 1rem;
-    gap: 15%;
-    padding: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.thumbnailtext{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.thumbnailtimeA, .thumbnailtimeB{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-.thumbnailtext img{
-    width: 5rem;
-    height: 5rem;
-}
-.thumbnailtext h1{
-    font-weight: bold;
-    font-size: 32px;
-}
-.thumbnailtext h2{
-    font-weight: bold;
-    font-size: 18px;
+.thumbnail {
+  grid-area: Thumbnail;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15%;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  background: #EE4D9B;
+  border-radius: var(--radius);
 }
 
-/* informações */
-
-.informacoes{
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    gap: 1rem;
-}
-.informacoes img{
-    width: 18px;
-    height: 18px;
-}
-.informacoes div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+.thumbnailtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-/* Placa */
-
-.placa{
-    grid-area: placa;
-    height: 100%;
-    width: 100%;
-    background-color: blue;
+.thumbnailtimeA,
+.thumbnailtimeB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
+.thumbnailtext img { width: 5rem; height: 5rem; }
 
-/* Liga */
+.thumbnailtext h1 { font-size: 2rem; font-weight: 700; }
+.thumbnailtext h2 { font-size: 1.125rem; font-weight: 700; }
 
-.liga{
-    grid-area: liga;
-    height: 100%;
-    width: 100%;
-    background-color: #101010;
-    color: #606060;
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    padding: 0.1rem;
-    border-radius: 1rem;
-    padding-top: 1rem;
-    border-color: #565656;
+/* Informações */
+.informacoes {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 1rem;
 }
-.liga .Pontos{
-    color: white;
-    font-weight: bold;
+
+.informacoes img { width: 18px; height: 18px; }
+
+.informacoes div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
 }
-.liga p{
-    font-size: 12px;
+
+/* Placar */
+.placa {
+  grid-area: placa;
+  width: 100%;
+  height: 100%;
+  background: blue;
 }
+
+/* =========================
+   Liga / Tabela
+========================= */
+.liga {
+  grid-area: liga;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  width: 100%;
+  height: 100%;
+  padding: 1rem .1rem .1rem;
+  background: var(--clr-panel);
+  color: var(--clr-muted);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+}
+
+.liga p { font-size: 12px; }
+.liga .Pontos { color: #fff; font-weight: 700; }
 
 .LegendaLiga {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 5fr repeat(8, 1fr);
-    align-items: center;
-    border-bottom-width: 1px;
-    border-bottom-color: #565656;
+  display: grid;
+  grid-template-columns: 5fr repeat(8, 1fr);
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--clr-border);
 }
 
 .LegendaLiga p {
-    margin: 0;
-    text-align: center;
-    background-color: transparent;
+  margin: 0;
+  text-align: center;
+  background: transparent;
 }
-.LegendaLiga img{
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-}
-.LegendaLiga .Clube{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: transparent;
-}
+
 .LegendaLiga p:first-child {
-    text-align: left;
-    padding-left: .5rem;
+  text-align: left;
+  padding-left: .5rem;
+}
+
+.LegendaLiga img { width: 12px; height: 12px; background: transparent; }
+
+.LegendaLiga .Clube {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: transparent;
+}
+
+/* =========================
+   Página de Clube
+========================= */
+.ClubeMain {
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: .25fr 1fr .5fr 2.25fr;
+  grid-template-areas:
+    "header    header    header"
+    "liga destaque clube"
+    "liga jogadoras clube"
+    "liga jogadoras  aovivo";
+  justify-content: center;
+  align-items: center;
+}
+
+.Clubestitle { grid-area: clube; }
+.Clubestitle h1 { font-weight: 700; }  /* removido nesting SCSS */
+
+.Clubes {
+  grid-area: clube;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.clubeicon img { width: 5rem; height: 5rem; }
+
+/* Header genérico da página */
+.header {
+  grid-area: header;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  margin: 1rem;
 }
