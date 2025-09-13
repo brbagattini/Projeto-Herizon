@@ -19,7 +19,22 @@ function Clubes() {
         <img src="" alt="" />
       </div>
       <div className='Jogadoras'>
-
+        <div className='JogadorasLegenda'>
+          <h1></h1>
+          <h1>Nome</h1>
+          <h1>Idade</h1>
+          <h1>Posição</h1>
+          <h1>Time</h1>
+          <h1>Jogos</h1>
+        </div>
+        <div className='JogadorasTemplate'>
+          <img src="" alt="" />
+          <h1>Nome</h1>
+          <h1>Idade</h1>
+          <h1>Posição</h1>
+          <h1>Time</h1>
+          <h1>Jogos</h1>
+        </div>
       </div>
       <div className='Clubestitle'>
         <h1>Clubes</h1>
