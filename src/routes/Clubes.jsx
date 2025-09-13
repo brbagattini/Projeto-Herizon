@@ -12,7 +12,11 @@ function Clubes() {
         <a href="/sobrenos"><p>Avançar</p></a>
       </div>
       <div className='ThumbnailJogadoras'>
-
+        <div className='textThumbnailJogadoras'>
+          <h1>JOGADORA</h1>
+          <p>31 jogos em 40 partidas</p>
+        </div>
+        <img src="" alt="" />
       </div>
       <div className='Jogadoras'>
 
