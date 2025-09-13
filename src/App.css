@@ -407,13 +407,13 @@ main {
     "imagem   imagem   imagem   imagem"
     "term     term     term     term";
   background-color: #262626;
-  color: var(--clr-destaque);
+  color: var(--clr-text);
   grid-gap: 1rem;
   border-radius: 1rem;
 }
 .LoginMain input{ border: 1px solid var(--clr-destaque); }
 .LoginMain select{ border: 1px solid var(--clr-destaque); }
-.LoginContainer a { color: var(--clr-text); }
+.LoginContainer a { color: var(--clr-destaque); }
 .LoginContainer .name{ grid-area: nome; }
 .LoginContainer .date{ grid-area: data; }
 .LoginContainer .email{ grid-area: email; }
