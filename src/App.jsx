@@ -1,30 +1,30 @@
-// import { useState } from 'react'
-import './App.css'
-// Reaproveitamento de estrutura
-import { Outlet } from 'react-router-dom'
+// src/App.jsx
+import "./App.css";
+import { Outlet, NavLink } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <>
-    <div className='App'>
-    <nav>
-      <div className='Nav-Link-Div'>
-        <a href="/home" className='Nav-Link'>Notícias</a>
-        <a href="/clubes" className='Nav-Link'>Atletas e Clubes</a>
-        <a href="/sobrenos" className='Nav-Link'>História</a>
-      </div>
-      <div className='search-bar-Div'>
-        <input type="text" className='search-bar'/>
-      </div>
-      <div className='PerfilDiv'>
-        <img src="" alt="" className='ImgPerfil'/>
-        <a href="/" className='Perfil-Link'>perfil</a>
-      </div>
-    </nav>
-      <Outlet></Outlet>
-    </div>
-    </>
-  )
-}
+    <div className="App">
+      <nav>
+        <div className="Nav-Link-Div">
+          <NavLink to="/home" className={({isActive}) => isActive ? "Nav-Link active" : "Nav-Link"}>
+            Notícias
+          </NavLink>
+          <NavLink to="/clubes" className="Nav-Link">Atletas e Clubes</NavLink>
+          <NavLink to="/sobrenos" className="Nav-Link">História</NavLink>
+        </div>
 
-export default App
+        <div className="search-bar-Div">
+          <input type="text" className="search-bar" />
+        </div>
+
+        <div className="PerfilDiv">
+          <img src="" alt="" className="ImgPerfil" />
+          <NavLink to="/perfil" className="Perfil-Link">perfil</NavLink>
+        </div>
+      </nav>
+
+      <Outlet />
+    </div>
+  );
+}

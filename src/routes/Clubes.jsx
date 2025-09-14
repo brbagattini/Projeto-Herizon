@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../App.css";
 import { ClubModal, PlayerModal } from "./modal";
+import { Link } from "react-router-dom";
 
 function Clubes() {
   const [selectedClub, setSelectedClub] = useState(null);
@@ -85,12 +86,8 @@ function Clubes() {
     <>
       <main className="ClubeMain">
         <div className="header">
-          <a href="/home">
-            <p>Voltar</p>
-          </a>
-          <a href="/sobrenos">
-            <p>Avançar</p>
-          </a>
+          <Link to="/home"><p>Voltar</p></Link>
+          <Link to="/sobrenos"><p>Avançar</p></Link>
         </div>
 
         <div className="ThumbnailJogadoras">
