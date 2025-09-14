@@ -1,85 +1,13 @@
 import { useState } from "react";
 import "../App.css";
 import { ClubModal, PlayerModal } from "./modal";
+import { jogadoras } from "./data";
+import { clubes } from "./data";
 
 function Clubes() {
   const [selectedClub, setSelectedClub] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-  const clubes = [
-    {
-      id: "fig",
-      nome: "Figueirense",
-      escudo: "/imgs/figueirense.png",
-      estadio: "Orlando Scarpelli",
-      fundacao: "1921",
-      cidade: "Florianópolis/SC",
-      cores: "Preto e branco",
-    },
-    {
-      id: "fer",
-      nome: "Ferroviária",
-      escudo: "/imgs/ferroviaria.png",
-      estadio: "Fonte Luminosa",
-      fundacao: "1950",
-      cidade: "Araraquara/SP",
-      cores: "Grená",
-    },
-    {
-      id: "cor",
-      nome: "Corinthians",
-      escudo: "/imgs/corinthians.png",
-      estadio: "Neo Química Arena",
-      fundacao: "1910",
-      cidade: "São Paulo/SP",
-      cores: "Preto e branco",
-    },
-  ];
-
-  const jogadoras = [
-    {
-      id: "j1",
-      nome: "Amanda Silva",
-      idade: 24,
-      posicao: "Atacante",
-      time: "Ferroviária",
-      jogos: 31,
-      gols: 12,
-      assistencias: 7,
-      foto: "/imgs/jogadoras/amanda.jpg",
-      nacionalidade: "Brasil",
-      numero: 9,
-      altura: "1,68 m",
-    },
-    {
-      id: "j2",
-      nome: "Bianca Souza",
-      idade: 27,
-      posicao: "Meia",
-      time: "Corinthians",
-      jogos: 29,
-      gols: 5,
-      assistencias: 10,
-      foto: "/imgs/jogadoras/bianca.jpg",
-      nacionalidade: "Brasil",
-      numero: 10,
-      altura: "1,64 m",
-    },
-    {
-      id: "j3",
-      nome: "Carla Mendes",
-      idade: 22,
-      posicao: "Zagueira",
-      time: "Figueirense",
-      jogos: 25,
-      gols: 2,
-      assistencias: 1,
-      foto: "/imgs/jogadoras/carla.jpg",
-      nacionalidade: "Brasil",
-      numero: 3,
-      altura: "1,75 m",
-    },
-  ];
 
   return (
     <>
