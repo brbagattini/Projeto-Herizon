@@ -442,12 +442,12 @@ main {
     gap: 5rem;
 }
 .SobreNosMain{
-  grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+  grid-template-columns: 2fr 2fr;
   grid-template-rows: .25fr 3.5fr .25fr;
   grid-template-areas:
-    "header header header header"
-    "liga slideshow text low"
-    "liga down down low";
+    "header header"
+    "slideshow text"
+    "down down";
   justify-content: center;
   align-items: center;
 }
