@@ -75,20 +75,76 @@ function Home() {
           <div className='proximascontainer'>
             <div className='clubeproximas'>
               <img src="" alt="" />
-              <p>Barcelona</p>
+              <p>Corinthians</p>
               <p>VS</p>
-              <p>Real Madrid</p>
+              <p>Cruzeiro</p>
               <img src="" alt="" />
             </div>
-            
             <div className='informacoes'>
               <div className='Local'>
                 <img src="" alt="" />
-                <p>Morumbi</p>
+                <p>Neo Quimica Arena</p>
               </div>
               <div className='Hora'>
                 <img src="" alt="" />
-                <p>Morumbi</p>
+                <p>14/09 10:30</p>
+              </div>
+            </div>
+          </div>
+          <div className='proximascontainer'>
+            <div className='clubeproximas'>
+              <img src="" alt="" />
+              <p>Cruzeiro</p>
+              <p>VS</p>
+              <p>Corinthians</p>
+              <img src="" alt="" />
+            </div>
+            <div className='informacoes'>
+              <div className='Local'>
+                <img src="" alt="" />
+                <p>Independência</p>
+              </div>
+              <div className='Hora'>
+                <img src="" alt="" />
+                <p>07/09 10:30</p>
+              </div>
+            </div>
+          </div>
+          <div className='proximascontainer'>
+            <div className='clubeproximas'>
+              <img src="" alt="" />
+              <p>Cruzeiro</p>
+              <p>VS</p>
+              <p>Palmeiras</p>
+              <img src="" alt="" />
+            </div>
+            <div className='informacoes'>
+              <div className='Local'>
+                <img src="" alt="" />
+                <p>Independência</p>
+              </div>
+              <div className='Hora'>
+                <img src="" alt="" />
+                <p>31/08 10:30</p>
+              </div>
+            </div>
+          </div>
+          <div className='proximascontainer'>
+            <div className='clubeproximas'>
+              <img src="" alt="" />
+              <p>Corinthians</p>
+              <p>VS</p>
+              <p>São Paulo</p>
+              <img src="" alt="" />
+            </div>
+            <div className='informacoes'>
+              <div className='Local'>
+                <img src="" alt="" />
+                <p>Canindé</p>
+              </div>
+              <div className='Hora'>
+                <img src="" alt="" />
+                <p>31/08 10:30</p>
               </div>
             </div>
           </div>

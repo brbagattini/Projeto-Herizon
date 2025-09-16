@@ -59,29 +59,24 @@ function Clubes() {
           ))}
         </div>
 
-        <div className="Clubestitle">
-          <h1>Clubes</h1>
-          <div className="Clubes">
-            {clubes.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className="clubeicon"
-                onClick={() => setSelectedClub(c)}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  padding: 0,
-                  cursor: "pointer",
-                  textAlign: "center",
-                }}
-              >
-                <img src={c.escudo} alt={`Escudo do ${c.nome}`} />
-                <p>{c.nome}</p>
-              </button>
-            ))}
-          </div>
-        </div>
+<div className="Clubestitle">
+  <h1>Clubes</h1>
+  <div className="Clubes Clubes--scrollY">
+    {clubes.map((c) => (
+      <button
+        key={c.id}
+        type="button"
+        className="clubeicon"
+        onClick={() => setSelectedClub(c)}
+        style={{ background: "transparent", border: "none", padding: 0, cursor: "pointer", textAlign: "center" }}
+      >
+        <img src={c.escudo} alt={`Escudo do ${c.nome}`} />
+        <p>{c.nome}</p>
+      </button>
+    ))}
+  </div>
+</div>
+
 
         <ClubModal open={!!selectedClub} onClose={() => setSelectedClub(null)} club={selectedClub} />
         <PlayerModal
