@@ -11,7 +11,15 @@ function Home() {
         <a href="/clubes"><p>Avançar</p></a>
       </div>
         <div className='placa'>Placa das propagandas</div>
-        <div className='ultimoJogo'>Último jogo</div>
+        <div className='ultimoJogo'>
+          <div className='UltimoJogoContainer'>
+              <img src="" alt="" id='ultimoJogoEscudoA' />
+              <h1 id='ultimoJogoGolsA'></h1>
+            <h1>X</h1>
+              <h1 id='ultimoJogoGolsB'></h1>
+              <img src="" alt="" id='ultimoJogoEscudoA'/>
+          </div>
+        </div>
         <div className='thumbnail'>
           <div className='thumbnailtext'>
             <div className='thumbnailtimeA'>

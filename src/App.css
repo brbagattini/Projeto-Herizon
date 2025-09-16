@@ -62,7 +62,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 3rem;
+  gap: 1rem;
   width: 100%;
   height: var(--nav-h);
   background: var(--clr-surface);
@@ -75,7 +75,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
   width: 30%;
 }
 
@@ -154,9 +154,34 @@ main {
   grid-area: ultimojogo;
   width: 100%;
   height: 100%;
-  background: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.UltimoJogoContainer {
+  width: 1090%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+.UltimoJogoContainer h1{
+  font-size: 24px;
+  font-weight: 600;
+}
+.UltimoJogoContainer img {
+  height: 4rem;
+  width: 4rem;
+}
+#ultimoJogoTimeA, #ultimoJogoTimeB{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 /* Próximas Partidas */
 .proximasPartidas {
   grid-area: partidas;

@@ -59,6 +59,7 @@ function App() {
             <a href="/home" className='Nav-Link'>Notícias</a>
             <a href="/clubes" className='Nav-Link'>Atletas e Clubes</a>
             <a href="/sobrenos" className='Nav-Link'>História</a>
+            <a href="/loja" className='Nav-Link'>Loja</a>
           </div>
 
           {/* ===== Busca ===== */}
