@@ -672,7 +672,7 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
     text-align: center;
   }
   .ThumbnailJogadoras h1 { font-size: 22px; }
-  .ThumbnailJogadoras img { width: 3rem; height: auto; }
+  .ThumbnailJogadoras img { width: max-content; height: auto; }
 
   /* Lista Jogadoras: rolagem horizontal garantida */
   .Jogadoras { overflow-x: auto; }

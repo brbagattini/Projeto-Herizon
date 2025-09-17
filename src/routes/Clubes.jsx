@@ -3,6 +3,7 @@ import "../App.css";
 import { ClubModal, PlayerModal } from "./modal";
 import { jogadoras } from "./data";
 import { clubes } from "./data";
+import Amanda from './imgs/jogadoras/Amanda.png'
 
 function Clubes() {
   const [selectedClub, setSelectedClub] = useState(null);
@@ -23,10 +24,10 @@ function Clubes() {
 
         <div className="ThumbnailJogadoras">
           <div className="textThumbnailJogadoras">
-            <h1>JOGADORA</h1>
-            <p>31 jogos em 40 partidas</p>
+            <h1>Amanda Gutierres</h1>
+            <p>17 gols em 15 partidas</p>
           </div>
-          <img src="" alt="" />
+          <img src={Amanda} alt=""/>
         </div>
 
         <div className="Jogadoras">
