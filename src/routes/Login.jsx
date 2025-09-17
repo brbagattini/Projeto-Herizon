@@ -1,30 +1,30 @@
-// src/routes/Perfil.jsx
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { isAuthenticated, login, register, logout, getPerfil } from "../utils/auth";
 import "../App.css";
 
-export default function Perfil() {
-  const [tab, setTab] = useState("perfil");
-  const [form, setForm] = useState(() => {
-    const saved = JSON.parse(localStorage.getItem("perfil") || "{}");
-    return {
-      name: saved.name || "",
-      email: saved.email || "",
-      birth: saved.birth || "",
-      gender: saved.gender || "",
-      team: saved.team || "",
-      location: saved.location || "",
-      bio: saved.bio || "",
-      avatar: saved.avatar || "",
-      notifyNews: saved.notifyNews ?? true,
-      notifyMatches: saved.notifyMatches ?? false,
-      theme: saved.theme || "dark",
-    };
+export default function Login() {
+  const nav = useNavigate();
+  const [mode, setMode] = useState("login"); // "login" | "signup"
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    avatar: "",
   });
-  const [avatarPreview, setAvatarPreview] = useState(form.avatar || "");
+  const [preview, setPreview] = useState("");
 
-   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", form.theme || "dark");
-  }, [form.theme]);
+  // Se já está logado, manda pro perfil
+  useEffect(() => {
+    if (isAuthenticated()) nav("/perfil", { replace: true });
+  }, [nav]);
+
+  // Herdar tema salvo, se houver
+  useEffect(() => {
+    const perfil = getPerfil();
+    const theme = perfil?.theme || "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+  }, []);
 
   function onChange(e) {
     const { name, value } = e.target;
@@ -37,74 +37,65 @@ export default function Perfil() {
     const reader = new FileReader();
     reader.onload = () => {
       const dataUrl = reader.result;
-      setAvatarPreview(dataUrl);
+      setPreview(dataUrl);
       setForm((f) => ({ ...f, avatar: dataUrl }));
     };
     reader.readAsDataURL(file);
   }
 
-  function save(msg = "Perfil salvo!") {
-    if (!form.name || !form.email) {
-      alert("Preencha ao menos Nome e Email.");
-      return;
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    if (mode === "signup") {
+      if (!form.name || !form.email || !form.password) {
+        alert("Preencha Nome, Email e Senha.");
+        return;
+      }
+      try {
+        await register({
+          name: form.name.trim(),
+          email: form.email.trim().toLowerCase(),
+          password: form.password,
+          avatar: form.avatar || "",
+        });
+        nav("/perfil", { replace: true });
+      } catch (err) {
+        console.error(err);
+        alert("Falha no cadastro. Tente novamente.");
+      }
+    } else {
+      if (!form.email || !form.password) {
+        alert("Informe Email e Senha.");
+        return;
+      }
+      try {
+        const ok = await login(form.email.trim().toLowerCase(), form.password);
+        if (!ok) {
+          alert("Email ou senha inválidos.");
+          return;
+        }
+        nav("/perfil", { replace: true });
+      } catch (err) {
+        console.error(err);
+        alert("Falha no login. Tente novamente.");
+      }
     }
-    localStorage.setItem("perfil", JSON.stringify(form));
-    alert(msg);
   }
 
   return (
-    <main className="PerfilMain">
-      <section className="PerfilCard">
-        {/* Cabeçalho com capa + avatar */}
-        <div className="PerfilHeader">
-          <div className="PerfilCover" />
-          <div className="PerfilAvatar">
-            <img
-              src={avatarPreview || "/imgs/avatar-placeholder.png"}
-              alt="Avatar"
-            />
-            <label className="PerfilAvatarBtn">
-              Trocar foto
-              <input type="file" accept="image/*" onChange={onAvatar} />
-            </label>
-          </div>
-          <div className="PerfilBasic">
-            <h1>{form.name || "Seu nome"}</h1>
-            <p className="muted">{form.email || "seu@email.com"}</p>
-          </div>
-        </div>
+    <main className="AuthMain">
+      <section className="AuthCard">
+        <header className="AuthHeader">
+          <h1>{mode === "login" ? "Entrar" : "Criar conta"}</h1>
+          <p className="muted">
+            {mode === "login"
+              ? "Acesse com seu email e senha."
+              : "Crie sua conta local. Sua foto e dados ficam no seu navegador (localhost)."}
+          </p>
+        </header>
 
-        {/* Abas */}
-        <div className="PerfilTabs">
-          <button
-            className={tab === "perfil" ? "active" : ""}
-            onClick={() => setTab("perfil")}
-          >
-            Perfil
-          </button>
-          <button
-            className={tab === "preferencias" ? "active" : ""}
-            onClick={() => setTab("preferencias")}
-          >
-            Preferências
-          </button>
-          <button
-            className={tab === "seguranca" ? "active" : ""}
-            onClick={() => setTab("seguranca")}
-          >
-            Segurança
-          </button>
-        </div>
-
-        {/* Conteúdo das abas */}
-        {tab === "perfil" && (
-          <form
-            className="PerfilForm"
-            onSubmit={(e) => {
-              e.preventDefault();
-              save();
-            }}
-          >
+        <form className="AuthForm" onSubmit={onSubmit}>
+          {mode === "signup" && (
             <div className="field">
               <label>Nome completo</label>
               <input
@@ -112,191 +103,84 @@ export default function Perfil() {
                 value={form.name}
                 onChange={onChange}
                 placeholder="Ex.: Amanda Silva"
+                autoFocus
               />
             </div>
+          )}
 
+          <div className="field">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={onChange}
+              placeholder="voce@email.com"
+              autoFocus={mode === "login"}
+            />
+          </div>
+
+          <div className="field">
+            <label>Senha</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={onChange}
+              placeholder="••••••••"
+            />
+          </div>
+
+          {mode === "signup" && (
             <div className="field">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={onChange}
-                placeholder="voce@email.com"
-              />
-            </div>
-
-            <div className="field grid2">
-              <div>
-                <label>Data de nascimento</label>
-                <input
-                  type="date"
-                  name="birth"
-                  value={form.birth}
-                  onChange={onChange}
+              <label>Foto (opcional)</label>
+              <div className="AvatarRow">
+                <img
+                  src={preview || "/imgs/avatar-placeholder.png"}
+                  alt="Prévia"
+                  className="AvatarPreview"
                 />
+                <label className="btnGhost">
+                  Selecionar imagem
+                  <input type="file" accept="image/*" onChange={onAvatar} hidden />
+                </label>
               </div>
-              <div>
-                <label>Gênero</label>
-                <select
-                  name="gender"
-                  value={form.gender}
-                  onChange={onChange}
-                >
-                  <option value="">Selecione</option>
-                  <option>Feminino Cisgênero</option>
-                  <option>Masculino Cisgênero</option>
-                  <option>Transfeminino / Mulher trans</option>
-                  <option>Transmasculino / Homem trans</option>
-                  <option>Travesti</option>
-                  <option>Não binário</option>
-                  <option>Prefiro não informar</option>
-                </select>
-              </div>
+              <p className="muted small">
+                A imagem será salva no armazenamento local (localStorage) como Data URL.
+              </p>
             </div>
+          )}
 
-            <div className="field grid2">
-              <div>
-                <label>Time favorito</label>
-                <input
-                  name="team"
-                  value={form.team}
-                  onChange={onChange}
-                  placeholder="Ex.: Corinthians"
-                />
-              </div>
-              <div>
-                <label>Cidade/Estado</label>
-                <input
-                  name="location"
-                  value={form.location}
-                  onChange={onChange}
-                  placeholder="Ex.: São Paulo/SP"
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label>Bio</label>
-              <textarea
-                name="bio"
-                rows={3}
-                value={form.bio}
-                onChange={onChange}
-                placeholder="Conte um pouco sobre você…"
-              />
-            </div>
-
-            <div className="actions">
-              <button type="submit" className="btnPrimary">
-                Salvar mudanças
-              </button>
-            </div>
-          </form>
-        )}
-
-        {tab === "preferencias" && (
-  <div className="PerfilForm">
-    <div className="field">
-      <label>Tema</label>
-      <select
-        name="theme"
-        value={form.theme}
-        onChange={onChange}
-      >
-        <option value="dark">Escuro</option>
-        <option value="light">Claro</option>
-      </select>
-    </div>
-
-    <div className="field">
-      <label>Notificações</label>
-
-      <div className="switchList">
-        {/* Toggle: Novidades */}
-        <label className="switchItem">
-          <input
-            type="checkbox"
-            checked={!!form.notifyNews}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, notifyNews: e.target.checked }))
-            }
-          />
-          <span className="switchVisual" aria-hidden="true"></span>
-          <span className="switchLabel">Novidades</span>
-        </label>
-
-        {/* Toggle: Jogos e resultados */}
-        <label className="switchItem">
-          <input
-            type="checkbox"
-            checked={!!form.notifyMatches}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, notifyMatches: e.target.checked }))
-            }
-          />
-          <span className="switchVisual" aria-hidden="true"></span>
-          <span className="switchLabel">Jogos e resultados</span>
-        </label>
-      </div>
-    </div>
-
-    <div className="actions">
-      <button
-        className="btnPrimary"
-        onClick={() => save("Preferências salvas!")}
-      >
-        Salvar preferências
-      </button>
-    </div>
-  </div>
-)}
-
-
-        {tab === "seguranca" && (
-          <form
-            className="PerfilForm"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Senha atualizada (exemplo)");
-            }}
-          >
-            <div className="field grid2">
-              <div>
-                <label>Nova senha</label>
-                <input type="password" name="newPass" placeholder="••••••••" />
-              </div>
-              <div>
-                <label>Confirmar nova senha</label>
-                <input
-                  type="password"
-                  name="confirmPass"
-                  placeholder="••••••••"
-                />
-              </div>
-            </div>
-
-            <div className="actions">
-              <button type="submit" className="btnPrimary">
-                Atualizar senha
-              </button>
-            </div>
-
-            <div className="danger">
-              <h4>Zona de risco</h4>
+          <div className="actions">
+            <button type="submit" className="btnPrimary">
+              {mode === "login" ? "Entrar" : "Cadastrar e entrar"}
+            </button>
+            {isAuthenticated() && (
               <button
                 type="button"
                 className="btnDanger"
-                onClick={() =>
-                  confirm("Tem certeza?") &&
-                  alert("Conta desativada (exemplo)")
-                }
+                onClick={() => {
+                  logout();
+                  alert("Sessão encerrada.");
+                }}
               >
-                Desativar conta
+                Sair
               </button>
-            </div>
-          </form>
-        )}
+            )}
+          </div>
+        </form>
+
+        <footer className="AuthFooter">
+          {mode === "login" ? (
+            <button className="linkBtn" onClick={() => setMode("signup")}>
+              Não tem conta? Criar agora
+            </button>
+          ) : (
+            <button className="linkBtn" onClick={() => setMode("login")}>
+              Já tem conta? Entrar
+            </button>
+          )}
+        </footer>
       </section>
     </main>
   );

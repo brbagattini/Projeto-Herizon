@@ -359,3 +359,21 @@ html[data-theme="light"] .aoVivo{background:#fff;border-color:#e5e7eb}
   .PerfilCover{height:120px}
   .PerfilAvatar img{width:68px;height:68px}
 }
+/* App.css */
+.PerfilDiv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.PerfilDiv .ImgPerfil {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+.PerfilDiv .Perfil-Link {
+  color: inherit;
+  font-weight: 600;
+  text-transform: none;
+}
