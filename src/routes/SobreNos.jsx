@@ -3,6 +3,9 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { initSlider } from "./Slider";
+import historia1 from '../Imagens/Historia 1.jpg'
+import historia2 from '../Imagens/Historia 2.jpg'
+import historia3 from '../Imagens/Historia 3.jpg'
 
 export default function SobreNos() {
   const histRef = useRef(null);
@@ -23,9 +26,9 @@ export default function SobreNos() {
       </div>
 
       <div className="HistoriaSlideshow" ref={histRef}>
-        <div className="slider"><img src="/history/1.jpg" alt="História 1" /></div>
-        <div className="slider"><img src="/history/2.jpg" alt="História 2" /></div>
-        <div className="slider"><img src="/history/3.jpg" alt="História 3" /></div>
+        <div className="slider"><img src={historia1} alt="História 1" /></div>
+        <div className="slider"><img src={historia2} alt="História 2" /></div>
+        <div className="slider"><img src={historia3} alt="História 3" /></div>
 
         <button className="prev-button" type="button" aria-label="Anterior">‹</button>
         <button className="next-button" type="button" aria-label="Próximo">›</button>

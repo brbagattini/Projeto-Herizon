@@ -5,6 +5,9 @@ import { jogadoras } from "./data";
 import { clubes } from "./data";
 import { useEffect, useRef } from 'react';
 import { initSlider } from './Slider'
+import Propaganda1 from '../Imagens/Propaganda 1.jpg'
+import Propaganda2 from '../Imagens/Propaganda 2.jpg'
+import Propaganda3 from '../Imagens/Propaganda 3.jpg'
 
 const ads = [
   { src: "/ads/ad1.jpg", alt: "Patrocinador 1", href: "https://exemplo1.com" },
@@ -46,9 +49,9 @@ function Home() {
 
       <div className="placa" ref={placaRef}>
         {/* SLIDES: classe .slider */}
-        <div className="slider"><img src="/ads/ad1.jpg" alt="Anúncio 1" /></div>
-        <div className="slider"><img src="/ads/ad2.jpg" alt="Anúncio 2" /></div>
-        <div className="slider"><img src="/ads/ad3.jpg" alt="Anúncio 3" /></div>
+        <div className="slider"><img src={Propaganda1} alt="Anúncio 1" /></div>
+        <div className="slider"><img src={Propaganda2} alt="Anúncio 2" /></div>
+        <div className="slider"><img src={Propaganda3} alt="Anúncio 3" /></div>
 
         {/* BOTÕES: suas classes */}
         <button className="prev-button" aria-label="Anterior">‹</button>
@@ -96,112 +99,112 @@ function Home() {
                 <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
                 <p>Cruzeiro</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>11</p><p>3</p><p>1</p><p>35</p><p>15</p><p>20</p>
+              <p className='Pontos'>36</p><p>15</p><p>11</p><p>3</p><p>1</p><p>35</p><p>15</p><p>20</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`}/>
                 <p>Corinthians</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>34</p><p>15</p><p>10</p><p>4</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={SaoPaulo?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${SaoPaulo?.nome || 'SaoPaulo'}`}/>
                 <p>São Paulo</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>10</p><p>3</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Palmeiras?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Palmeiras?.nome || 'Palmeiras'}`}/>
                 <p>Palmeiras</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Flamengo?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Flamengo?.nome || 'Flamengo'}`}/>
                 <p>Flamengo</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Ferroviária?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Ferroviária?.nome || 'Ferroviária'}`}/>
                 <p>Ferroviária</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Bahia?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Bahia?.nome || 'Bahia'}`}/>
                 <p>Bahia</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={RedBull?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${RedBull?.nome || 'RedBull'}`}/>
                 <p>Bragantino</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={America?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${America?.nome || 'America'}`}/>
                 <p>América-MG</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Fluminense?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Fluminense?.nome || 'Fluminense'}`}/>
                 <p>Fluminense</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Grêmio?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Grêmio?.nome || 'Grêmio'}`}/>
                 <p>Grêmio</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Inter?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Inter?.nome || 'Inter'}`}/>
                 <p>Internacional</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Real?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Real?.nome || 'Real'}`}/>
                 <p>Real Brasília</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Juventude?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Juventude?.nome || 'Juventude'}`}/>
                 <p>Juventude</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Amazonia?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Amazonia?.nome || 'Amazonia'}`}/>
                 <p>3B Amazônia</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
             <div className='LegendaLiga'>
               <div className='Clube'>
                 <img src={Sport?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Sport?.nome || 'Sport'}`}/>
                 <p>Sport</p>
               </div>
-              <p className='Pontos'>43</p><p>15</p><p>43</p><p>43</p><p>43</p><p>2</p><p>4</p><p>4</p>
+              <p className='Pontos'>Pts</p><p>15</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
             </div>
           </div>
         </div>
