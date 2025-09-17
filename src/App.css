@@ -1,11 +1,12 @@
 @import "tailwindcss";
-/* #EE4D9B */
+
 /* =========================
-   Design tokens / base
+   TOKENS / BASE
 ========================= */
-:root {
+:root{
   --nav-h: 4rem;
   --aside-w: 5rem;
+
   --clr-destaque: #EE4D9B;
   --clr-bg: #000;
   --clr-surface: #262626;
@@ -20,426 +21,283 @@
   --space-2: 1rem;
 }
 
-/* Reset mínimo e padrões */
+/* Reset essencial */
 *,
 *::before,
 *::after { box-sizing: border-box; }
-
 html { font-size: 16px; }
-
 body {
   margin: 0;
   background: var(--clr-bg);
   color: var(--clr-text);
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
-
 img { display: block; max-width: 100%; height: auto; }
+#root { width: 100%; min-height: 100vh; }
 
-/* Root app container */
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-*{
-    font-family: "Roboto";
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    font-size: 16px;
-}
-@font-face {
-    font-family: "Roboto";
-    src: url("Fontes/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
-}
-body{
-    background-color: #000;
+/* Fonte local (se existir) */
+@font-face{
+  font-family: "Roboto";
+  src: url("/Fontes/Roboto/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =========================
-   Navegação (header)
+   NAV
 ========================= */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  width: 100%;
-  height: var(--nav-h);
+nav{
+  display: flex; align-items: center; gap: 1rem;
+  height: var(--nav-h); width: 100%;
   background: var(--clr-surface);
 }
-
-.Nav-Link { height: 100%; margin: 0 1rem; }
-
-.Nav-Link-Div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 1rem;
-  width: 30%;
+.Nav-Link{ height: 100%; margin: 0 1rem; }
+.Nav-Link-Div{
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; width: 30%;
 }
-
-.search-bar-Div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
-  height: var(--nav-h);
+.search-bar-Div{
+  display: flex; align-items: center; justify-content: center;
+  width: 40%; height: var(--nav-h); position: relative;
 }
-
-.search-bar {
-  width: 95%;
-  height: 2rem;
-  padding: 1rem;
+.search-bar{
+  width: 95%; height: 2rem; padding: 1rem;
   border: 1px solid rgba(255,255,255,.2);
   border-radius: var(--radius);
-  background: transparent;
-  color: inherit;
+  background: transparent; color: inherit;
 }
-
-.PerfilDiv {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  width: 20%;
-  font-weight: 700;
-  font-size: 1.125rem; /* 18px */
+.PerfilDiv{
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 1rem; width: 20%; font-weight: 700; font-size: 1.125rem;
 }
-
-.PerfilDiv img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-}
+.PerfilDiv img{ width: 3rem; height: 3rem; border-radius: 50%; }
 
 /* =========================
-   Layout principal
+   LAYOUT PRINCIPAL
 ========================= */
-main {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    gap: var(--gap);
-    padding: 0 5%;
-    color: var(--clr-text);
+main{
+  display: grid; width: 100%; height: 100%;
+  gap: var(--gap); padding: 0 5%;
+  color: var(--clr-text);
 }
-
-.IndexMain {
+.IndexMain{
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: .25fr 1fr .5fr 1fr 1fr .25fr;
+  grid-template-rows: .25fr 1fr .5fr 1fr 1fr;
   grid-template-areas:
     "header    header    header"
     "ultimojogo Thumbnail placa"
     "liga      Thumbnail placa"
-    "liga      partidas  aovivo"
-    "Destaque  partidas  video"
-    "creditos  partidas  video";
-  justify-content: center;
-  align-items: center;
+    "liga      partidas  video"
+    "liga  partidas  lobby";
+  justify-content: center; align-items: center;
+}
+.header{
+  grid-area: header;
+  display: flex; gap: 1rem; width: 100%; height: 100%;
+  margin: 1rem 0;
 }
 
 /* =========================
-   Blocos / cards
+   BLOCOS / CARDS
 ========================= */
-.video {
-  grid-area: video;
-  width: 100%;
-  height: 100%;
-  color: #000;
-  border-radius: var(--radius);
+.video{
+  grid-area: video; width: 100%; height: 100%;
+  color: #000; border-radius: var(--radius);
 }
 
-.ultimoJogo {
+/* Último jogo */
+.ultimoJogo{
   grid-area: ultimojogo;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
 }
-.UltimoJogoContainer {
-  width: 1090%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid white;
-  border-radius: 1rem;
-  gap: 1rem;
+.UltimoJogoContainer{
+  width: 100%; height: 90%;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; border: 1px solid #fff; border-radius: var(--radius);
 }
-.UltimoJogoContainer h1{
-  font-size: 24px;
-  font-weight: 600;
-}
-.UltimoJogoContainer img {
-  height: 4rem;
-  width: 4rem;
-}
+.UltimoJogoContainer h1{ font-size: 24px; font-weight: 600; }
+.UltimoJogoContainer img{ width: 4rem; height: 4rem; }
 #ultimoJogoTimeA, #ultimoJogoTimeB{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-/* Próximas Partidas */
-.proximasPartidas {
-  grid-area: partidas;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
 }
 
-.proximascontainer {
-  width: 100%;
-  height: 5rem;
-  padding: .5rem;
-  background: var(--clr-surface);
+/* Próximas partidas */
+.proximasPartidas{
+  grid-area: partidas; display: flex; flex-direction: column;
+  gap: .5rem; width: 100%; height: 100%;
+}
+.proximascontainer{
+  width: 100%; height: 5rem; padding: .5rem;
+  background: var(--clr-surface); border-radius: var(--radius);
+}
+.clubeproximas{ display: flex; align-items: center; justify-content: center; gap: 2rem; margin-left: 1rem; }
+.clubeproximas img{ width: 3rem; height: 3rem; }
+
+.aoVivo{
+  grid-area: aovivo; width: 100%; height: 100%;
+  background: #fefefe; border: 1px solid var(--clr-border);
   border-radius: var(--radius);
 }
 
-.clubeproximas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-left: 1rem;
-}
-
-.clubeproximas img { width: 3rem; height: 3rem; }
-
-.aoVivo {
-  grid-area: aovivo;
-  width: 100%;
-  height: 100%;
-  background: #fefefe;
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-}
-
-.partidaDestaque {
-  grid-area: Destaque;
-  width: 100%;
-  height: 100%;
+.partidaDestaque{
+  grid-area: Destaque; width: 100%; height: 100%;
   background: wheat;
 }
 
-/* Thumbnail */
-.thumbnail {
+/* Thumbnail destaque */
+.thumbnail{
   grid-area: Thumbnail;
+  display: flex; align-items: center; justify-content: center;
+  gap: 15%; width: 100%; height: 100%;
+  padding: 2%; background: var(--clr-destaque); border-radius: var(--radius);
+}
+.thumbnailtext{ display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.thumbnailtimeA, .thumbnailtimeB{ display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.thumbnailtext img{ width: 5rem; height: 5rem; }
+.thumbnailtext h1{ font-size: 2rem; font-weight: 700; }
+.thumbnailtext h2{ font-size: 1.125rem; font-weight: 700; }
+
+/* Info linha */
+.informacoes{ display: flex; align-items: center; justify-self: center; gap: 1rem; }
+.informacoes img{ width: 18px; height: 18px; }
+.informacoes div{ display: flex; align-items: center; justify-content: center; gap: .5rem; }
+
+/* Placa (ads / slideshow tem seu CSS próprio) */
+.placa{
+  grid-area: placa; width: 100%; height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15%;
+}
+.slideshow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 2%;
-  background: #EE4D9B;
-  border-radius: var(--radius);
 }
-
-.thumbnailtext {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+.slider{
+  position: absolute;
+  transition: opacity 0.2s;
+  object-fit: cover;
+  opacity: 0;
 }
-
-.thumbnailtimeA,
-.thumbnailtimeB {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+.on {
+  opacity: 1;
 }
-
-.thumbnailtext img { width: 5rem; height: 5rem; }
-
-.thumbnailtext h1 { font-size: 2rem; font-weight: 700; }
-.thumbnailtext h2 { font-size: 1.125rem; font-weight: 700; }
-
-/* Informações */
-.informacoes {
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  gap: 1rem;
+.prev-button, .next-button{
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  background-color: #EE4D9B;
 }
-
-.informacoes img { width: 18px; height: 18px; }
-
-.informacoes div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-}
-
-/* Placar */
-.placa {
-  grid-area: placa;
-  width: 100%;
-  height: 100%;
-  background: blue;
-}
-
 /* =========================
-   Liga / Tabela
+   LIGA / TABELA
 ========================= */
-.liga {
+.liga{
   grid-area: liga;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid; grid-template-rows: auto 1fr; /* header + corpo rolável */
   gap: var(--space-1);
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   padding: 1rem .1rem .1rem;
-  background: var(--clr-panel);
-  color: var(--clr-muted);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
+  background: var(--clr-panel); color: var(--clr-muted);
+  border: 1px solid var(--clr-border); border-radius: var(--radius);
+  max-height: 360px; /* limite visual (ajuste se preciso) */
 }
+.liga p{ font-size: 12px; }
+.liga .Pontos{ color: #fff; font-weight: 700; }
 
-.liga p { font-size: 12px; }
-.liga .Pontos { color: #fff; font-weight: 700; }
-
-.LegendaLiga {
-  display: grid;
+/* Cabeçalho e linhas */
+.LegendaLiga{
+  display: grid; align-items: center; width: 100%;
   grid-template-columns: 5fr repeat(8, 1fr);
-  align-items: center;
-  width: 100%;
   border-bottom: 1px solid var(--clr-border);
 }
+.LegendaLiga p{ margin: 0; text-align: center; background: transparent; }
+.LegendaLiga p:first-child{ text-align: left; padding-left: .5rem; }
+.LegendaLiga img{ width: 12px; height: 12px; background: transparent; }
+.LegendaLiga .Clube{ display: flex; align-items: center; gap: .5rem; }
 
-.LegendaLiga p {
-  margin: 0;
-  text-align: center;
-  background: transparent;
+/* Header fixo + corpo com scroll */
+.LegendaLiga--header{
+  position: sticky; top: 0; z-index: 2;
+  background: var(--clr-panel);
 }
-
-.LegendaLiga p:first-child {
-  text-align: left;
-  padding-left: .5rem;
+.LigaScroll{
+  overflow-y: auto; padding-right: .25rem; min-height: 0;
 }
-
-.LegendaLiga img { width: 12px; height: 12px; background: transparent; }
-
-.LegendaLiga .Clube {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  background: transparent;
-}
+/* scrollbar */
+.LigaScroll::-webkit-scrollbar{ width: 8px; }
+.LigaScroll::-webkit-scrollbar-track{ background: #0c0c0c; border-radius: 8px; }
+.LigaScroll::-webkit-scrollbar-thumb{ background: #565656; border-radius: 8px; }
+.LigaScroll{ scrollbar-width: thin; scrollbar-color: #565656 #0c0c0c; }
 
 /* =========================
-   Página de Clube
+   PÁGINA DE CLUBE
 ========================= */
-.ClubeMain {
+.ClubeMain{
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: .25fr 1fr .5fr 2.25fr;
   grid-template-areas:
     "header    header    header"
-    "liga destaque clube"
-    "liga jogadoras clube"
-    "liga jogadoras  aovivo";
-  justify-content: center;
-  align-items: center;
+    "liga      destaque  clube"
+    "liga      jogadoras clube"
+    "liga      jogadoras clube";
+  justify-content: center; align-items: center;
 }
-
-.Clubestitle { grid-area: clube; }
-.Clubestitle h1 { font-weight: 700; }  /* removido nesting SCSS */
-
-.Clubes {
-  grid-area: clube;
-  display: grid;
+.Clubestitle{ grid-area: clube; }
+.Clubestitle h1{ font-weight: 700; }
+.Clubes{
+  grid-area: clube; display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 1rem;
-  width: 100%;
-  height: 100%;
+  gap: 1rem; width: 100%; height: 100%;
 }
+.clubeicon img{ width: 5rem; height: 5rem; }
 
-.clubeicon img { width: 5rem; height: 5rem; }
+/* Thumbnail Jogadoras */
+.ThumbnailJogadoras{
+  grid-area: destaque;
+  display: flex; align-items: center;
+  gap: 30%; padding: 0 20%;
+  width: 100%; height: 100%;
+  border-radius: var(--radius);
+  background-image: radial-gradient(ellipse, var(--clr-destaque), var(--clr-bg), var(--clr-bg));
+}
+.ThumbnailJogadoras img{ width: 4rem; height: 100%; object-fit: contain; }
+.ThumbnailJogadoras h1{ font-weight: 600; font-size: 36px; }
 
-/* Header genérico da página */
-.header {
-  grid-area: header;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  width: 100%;
-  height: 100%;
-  margin: 1rem;
-}
-.ThumbnailJogadoras {
-    grid-area: destaque;
-    background-image: radial-gradient(ellipse, var(--clr-destaque), var(--clr-bg), var(--clr-bg));
-    border-radius: 1rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    padding: 0% 20%;
-    align-items: center;
-    gap: 30%;
-    & img{
-        height: 100%;
-        width: 4rem;
-    }
-    & h1{
-        font-weight: 600;
-        font-size: 36px;
-    }
-}
-.Jogadoras {
-  grid-area: jogadoras;
-  width: 100%;
-  height: 100%;
-}
-
-.JogadorasTemplate {
-  width: 100%;
-  height: 4rem;
-  padding: .5rem;
-  display: grid;
+/* Listas de jogadoras */
+.Jogadoras{ grid-area: jogadoras; width: 100%; height: 100%; }
+.JogadorasLegenda{
+  width: 100%; height: 2.5rem; padding: .25rem;
+  display: grid; align-items: center;
   grid-template-columns: 1fr 4fr 1fr 2fr 2fr 1fr;
-  align-items: center;
-  background: var(--clr-surface);
-  border-left-width: 0.5rem;
-  border-left-color: #101010;
-  & img{
-    width: 3rem;
-    height: 3rem;
-  }
-}
-.JogadorasLegenda {
-  width: 100%;
-  height: 2.5rem;
-  padding: .25rem;
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr 2fr 2fr 1fr;
-  align-items: center;
   background: var(--clr-panel);
   border-radius: 0 1rem 0 0;
-  border-left-width: 0.5rem;
-  border-left-color: #090909;
+  border-left: .5rem solid #090909;
 }
+.JogadorasTemplate{
+  width: 100%; height: 4rem; padding: .5rem;
+  display: grid; align-items: center;
+  grid-template-columns: 1fr 4fr 1fr 2fr 2fr 1fr;
+  background: var(--clr-surface);
+  border-left: .5rem solid #101010;
+}
+.JogadorasTemplate img{ width: 3rem; height: 3rem; object-fit: cover; }
 
+/* =========================
+   LOGIN
+========================= */
 .LoginMain{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
 }
 .LoginContainer{
-  display: grid;
-  width: 80%;
-  height: 50%;
-  padding: 3rem;
+  display: grid; width: 80%; height: 50%; padding: 3rem; gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
@@ -448,14 +306,11 @@ main {
     "password password passwordconfirm passwordconfirm"
     "imagem   imagem   imagem   imagem"
     "term     term     term     term";
-  background-color: #262626;
-  color: var(--clr-text);
-  grid-gap: 1rem;
-  border-radius: 1rem;
+  background: var(--clr-surface); color: var(--clr-text);
+  border-radius: var(--radius);
 }
-.LoginMain input{ border: 1px solid var(--clr-destaque); }
-.LoginMain select{ border: 1px solid var(--clr-destaque); }
-.LoginContainer a { color: var(--clr-destaque); }
+.LoginMain input, .LoginMain select{ border: 1px solid var(--clr-destaque); }
+.LoginContainer a{ color: var(--clr-destaque); }
 .LoginContainer .name{ grid-area: nome; }
 .LoginContainer .date{ grid-area: data; }
 .LoginContainer .email{ grid-area: email; }
@@ -463,12 +318,13 @@ main {
 .LoginContainer .password{ grid-area: password; }
 .LoginContainer .passwordconfirm{ grid-area: passwordconfirm; }
 .LoginContainer .image{ grid-area: imagem; }
-.LoginContainer .term{ 
-    grid-area: term; 
-    display: flex;
-    align-items: center;
-    gap: 5rem;
+.LoginContainer .term{
+  grid-area: term; display: flex; align-items: center; gap: 5rem;
 }
+
+/* =========================
+   SOBRE NÓS
+========================= */
 .SobreNosMain{
   grid-template-columns: 2fr 2fr;
   grid-template-rows: .25fr 3.5fr .25fr;
@@ -476,93 +332,69 @@ main {
     "header header"
     "slideshow text"
     "down down";
+  justify-content: center; align-items: center;
+}
+.HistoriaSlideshow{
+  grid-area: slideshow; width: 32rem; height: 32rem;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.HistoriaSlideshow{
-    grid-area: slideshow;
-    width: 100%;
-    height: 32rem;
-    & img{
-        width: 100%;
-        height: 100%;
-    }
-}
-.TextHistoria{
-    grid-area: text;
-    width: 100%;
-    height: 32rem;
-}
-/* Dropdown da busca */
-.search-results {
-  position: absolute;
-  top: calc(50% + 1.25rem); /* abaixo do input (ajuste se precisar) */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-height: 60vh;
-  overflow: auto;
-  margin: .5rem 0 0;
-  padding: .25rem;
-  list-style: none;
+.TextHistoria{ grid-area: text; width: 100%; height: 32rem; }
 
-  background: var(--clr-panel, #101010);
-  color: var(--clr-text, #fff);
-  border: 1px solid var(--clr-border, #565656);
-  border-radius: .75rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,.4);
-  z-index: 20;
+/* =========================
+   DROPDOWN DA BUSCA
+========================= */
+.search-results{
+  position: absolute; top: calc(50% + 1.25rem); left: 50%; transform: translateX(-50%);
+  width: 95%; max-height: 60vh; overflow: auto;
+  margin: .5rem 0 0; padding: .25rem; list-style: none;
+  background: var(--clr-panel); color: var(--clr-text);
+  border: 1px solid var(--clr-border); border-radius: .75rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,.4); z-index: 20;
 }
-
-.search-item {
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  align-items: center;
-  gap: .75rem;
-  padding: .5rem .6rem;
-  border-radius: .5rem;
-  cursor: pointer;
+.search-item{
+  display: grid; grid-template-columns: 2rem 1fr; align-items: center;
+  gap: .75rem; padding: .5rem .6rem; border-radius: .5rem; cursor: pointer;
 }
+.search-item:hover, .search-item.is-active{ background: rgba(255,255,255,.06); }
+.search-item img{ width: 2rem; height: 2rem; object-fit: contain; border-radius: .25rem; background: #222; }
+.search-item__text{ display: flex; flex-direction: column; line-height: 1.2; }
+.search-item__label{ font-weight: 700; }
+.search-item__sub{ opacity: .7; font-size: .875rem; }
 
-.search-item:hover,
-.search-item.is-active {
-  background: rgba(255,255,255,.06);
+/* =========================
+   LISTA CLUBES (SCROLL)
+========================= */
+.Clubes--scrollY{
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem; max-height: 420px; overflow-y: auto; padding-right: .25rem;
+  border: 1px solid var(--clr-border); border-radius: .75rem;
 }
+.Clubes--scrollY::-webkit-scrollbar{ width: 8px; }
+.Clubes--scrollY::-webkit-scrollbar-track{ background: #101010; border-radius: 8px; }
+.Clubes--scrollY::-webkit-scrollbar-thumb{ background: #565656; border-radius: 8px; }
+.Clubes--scrollY{ scrollbar-width: thin; scrollbar-color: #565656 #101010; }
+.clubeicon img{ width: 64px; height: 64px; object-fit: contain; }
+.clubeicon p{ margin-top: .35rem; font-size: .9rem; }
+/* Estado dos slides */
+.slider { display: none; }
+.slider.on { display: block; }
 
-.search-item img {
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-  border-radius: .25rem;
-  background: #222;
+/* Se quiser transição “fade” sem inventar classe */
+.slider { opacity: 0; transition: opacity .35s ease; }
+.slider.on { display: block; opacity: 1; }
+
+/* Botões (se não houver estilo) */
+.prev-button, .next-button{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 2rem; height: 2rem; display: grid; place-items: center;
+  border: 1px solid var(--clr-border); border-radius: .5rem;
+  background: rgba(0,0,0,.35); color: #fff; cursor: pointer; z-index: 2;
 }
+.prev-button{ left: .5rem; }
+.next-button{ right: .5rem; }
 
-.search-item__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.search-item__label { font-weight: 700; }
-.search-item__sub   { opacity: .7; font-size: .875rem; }
-/* 3 colunas; 3 linhas visíveis; scroll vertical */
-.Clubes--scrollY {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: .75rem;
-  max-height: 420px;            /* ajuste pra caber ~3 linhas */
-  overflow-y: auto;
-  padding-right: .25rem;        /* respiro pro scrollbar */
-  border: 1px solid var(--clr-border, #565656);
-  border-radius: .75rem;
-}
-
-/* opcional: estiliza scrollbar */
-.Clubes--scrollY::-webkit-scrollbar { width: 8px; }
-.Clubes--scrollY::-webkit-scrollbar-track { background: #101010; border-radius: 8px; }
-.Clubes--scrollY::-webkit-scrollbar-thumb { background: #565656; border-radius: 8px; }
-.Clubes--scrollY { scrollbar-width: thin; scrollbar-color: #565656 #101010; }
-
-/* cards */
-.clubeicon img { width: 64px; height: 64px; object-fit: contain; }
-.clubeicon p { margin-top: .35rem; font-size: .9rem; }
+/* Garanta que os containers são position:relative
+   (placa e HistoriaSlideshow já existem no seu CSS; adicione se faltar) */
+.placa, .HistoriaSlideshow{ position: relative; overflow: hidden; }
