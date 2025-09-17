@@ -1,379 +1,523 @@
 @import "tailwindcss";
 
 /* =========================
-   Design tokens / base
+   TOKENS / BASE
 ========================= */
 :root{
-  --nav-h:4rem;
-  --aside-w:5rem;
-  --clr-destaque:#EE4D9B;
-  --clr-bg:#000;
-  --clr-surface:#262626;
-  --clr-panel:#101010;
-  --clr-text:#fff;
-  --clr-muted:#606060;
-  --clr-border:#565656;
+  --nav-h: 4rem;
+  --aside-w: 5rem;
 
-  --radius:1rem;
-  --gap:.5rem;
-  --space-1:.5rem;
-  --space-2:1rem;
+  --clr-destaque: #EE4D9B;
+  --clr-bg: #000;
+  --clr-surface: #262626;
+  --clr-panel: #101010;
+  --clr-text: #fff;
+  --clr-muted: #606060;
+  --clr-border: #565656;
+
+  --radius: 1rem;
+  --gap: .5rem;
+  --space-1: .5rem;
+  --space-2: 1rem;
 }
 
-/* Reset mínimo e padrões */
-*,*::before,*::after{box-sizing:border-box}
-html{font-size:16px}
-body{margin:0;background:var(--clr-bg);color:var(--clr-text)}
-img{display:block;max-width:100%;height:auto}
-
-/* Root app container */
-#root{width:100%;min-height:100vh}
-
-/* Tipografia base */
-*{
-  font-family:"Roboto",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  padding:0;margin:0;background-color:transparent;font-size:16px;
+/* Reset essencial */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
+img { display: block; max-width: 100%; height: auto; }
+#root { width: 100%; min-height: 100vh; }
+
+/* Fonte local (se existir) */
 @font-face{
-  font-family:"Roboto";
-  src:url("Fontes/Roboto/Roboto-VariableFont_wdth,wght.ttf");
+  font-family: "Roboto";
+  src: url("/Fontes/Roboto/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
-body{background:#000}
 
 /* =========================
-   Navegação (header)
+   NAV
 ========================= */
 nav{
-  display:flex;align-items:center;justify-content:flex-start;gap:3rem;
-  width:100%;height:var(--nav-h);background:var(--clr-surface);padding:0 1rem;
+  display: flex; align-items: center; gap: 1rem;
+  height: var(--nav-h); width: 100%;
+  background: var(--clr-surface);
 }
-.Nav-Link,.Perfil-Link{
-  height:100%;margin:0 1rem;color:#fff;text-decoration:none;
-  display:inline-flex;align-items:center;
+.Nav-Link{ height: 100%; margin: 0 1rem; }
+.Nav-Link-Div{
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; width: 30%;
 }
-.Nav-Link:hover,.Perfil-Link:hover{color:var(--clr-destaque)}
-
-.Nav-Link-Div{display:flex;align-items:center;justify-content:center;gap:2rem;width:40%}
-.search-bar-Div{display:flex;align-items:center;justify-content:center;width:35%;height:var(--nav-h)}
+.search-bar-Div{
+  display: flex; align-items: center; justify-content: center;
+  width: 40%; height: var(--nav-h); position: relative;
+}
 .search-bar{
-  width:95%;height:2rem;padding:1rem;border:1px solid rgba(255,255,255,.2);
-  border-radius:var(--radius);background:transparent;color:inherit;
+  width: 95%; height: 2rem; padding: 1rem;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius);
+  background: transparent; color: inherit;
 }
-.PerfilDiv{display:flex;align-items:center;gap:1rem;width:20%;font-weight:700;font-size:1.125rem}
-.PerfilDiv img{width:3rem;height:3rem;border-radius:50%}
+.PerfilDiv{
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 1rem; width: 20%; font-weight: 700; font-size: 1.125rem;
+}
+.PerfilDiv img{ width: 3rem; height: 3rem; border-radius: 50%; }
 
 /* =========================
-   Layout principal
+   LAYOUT PRINCIPAL
 ========================= */
-main{display:grid;width:100%;height:100%;gap:var(--gap);padding:0 5%;color:var(--clr-text)}
-
+main{
+  display: grid; width: 100%; height: 100%;
+  gap: var(--gap); padding: 0 5%;
+  color: var(--clr-text);
+}
 .IndexMain{
-  grid-template-columns:1fr 3fr 1fr;
-  grid-template-rows:.25fr 1fr .5fr 1fr 1fr .25fr;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: .25fr 1fr .5fr 1fr 1fr;
   grid-template-areas:
     "header    header    header"
     "ultimojogo Thumbnail placa"
     "liga      Thumbnail placa"
-    "liga      partidas  aovivo"
-    "Destaque  partidas  video"
-    "creditos  partidas  video";
-  justify-content:center;align-items:center;
+    "liga      partidas  video"
+    "liga  partidas  lobby";
+  justify-content: center; align-items: center;
+}
+.header{
+  grid-area: header;
+  display: flex; gap: 1rem; width: 100%; height: 100%;
+  margin: 1rem 0;
 }
 
 /* =========================
-   Blocos / cards
+   BLOCOS / CARDS
 ========================= */
-.video{grid-area:video;width:100%;height:100%;color:#000;border-radius:var(--radius)}
-.ultimoJogo{grid-area:ultimojogo;width:100%;height:100%;background:aqua}
+.video{
+  grid-area: video; width: 100%; height: 100%;
+  color: #000; border-radius: var(--radius);
+}
 
-.proximasPartidas{grid-area:partidas;width:100%;height:100%}
-.proximascontainer{width:100%;height:5.5rem;padding:.5rem;background:var(--clr-surface);border-radius:var(--radius)}
-.clubeproximas{display:flex;align-items:center;justify-content:center;gap:2rem;margin-left:1rem}
-.clubeproximas img{width:3rem;height:3rem}
+/* Último jogo */
+.ultimoJogo{
+  grid-area: ultimojogo;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.UltimoJogoContainer{
+  width: 100%; height: 90%;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; border: 1px solid #fff; border-radius: var(--radius);
+}
+.UltimoJogoContainer h1{ font-size: 24px; font-weight: 600; }
+.UltimoJogoContainer img{ width: 4rem; height: 4rem; }
+#ultimoJogoTimeA, #ultimoJogoTimeB{
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+}
 
-.aoVivo{grid-area:aovivo;width:100%;height:100%;background:#fefefe;border:1px solid var(--clr-border);border-radius:var(--radius)}
-.partidaDestaque{grid-area:Destaque;width:100%;height:100%;background:wheat}
+/* Próximas partidas */
+.proximasPartidas{
+  grid-area: partidas; display: flex; flex-direction: column;
+  gap: .5rem; width: 100%; height: 100%;
+}
+.proximascontainer{
+  width: 100%; height: 5rem; padding: .5rem;
+  background: var(--clr-surface); border-radius: var(--radius);
+}
+.clubeproximas{ display: flex; align-items: center; justify-content: center; gap: 2rem; margin-left: 1rem; }
+.clubeproximas img{ width: 3rem; height: 3rem; }
+
+.aoVivo{
+  grid-area: aovivo; width: 100%; height: 100%;
+  background: #fefefe; border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+}
+
+.partidaDestaque{
+  grid-area: Destaque; width: 100%; height: 100%;
+  background: wheat;
+}
 
 /* Thumbnail destaque */
 .thumbnail{
-  grid-area:Thumbnail;display:flex;align-items:center;justify-content:center;gap:15%;
-  width:100%;height:100%;padding:2%;background:#EE4D9B;border-radius:var(--radius);
+  grid-area: Thumbnail;
+  display: flex; align-items: center; justify-content: center;
+  gap: 15%; width: 100%; height: 100%;
+  padding: 2%; background: var(--clr-destaque); border-radius: var(--radius);
 }
-.thumbnailtext{display:flex;flex-direction:column;justify-content:center;text-align:center}
-.thumbnailtimeA,.thumbnailtimeB{display:flex;align-items:center;justify-content:center;gap:1rem}
-.thumbnailtext img{width:5rem;height:5rem}
-.thumbnailtext h1{font-size:2rem;font-weight:700}
-.thumbnailtext h2{font-size:1.125rem;font-weight:700}
+.thumbnailtext{ display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.thumbnailtimeA, .thumbnailtimeB{ display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.thumbnailtext img{ width: 5rem; height: 5rem; }
+.thumbnailtext h1{ font-size: 2rem; font-weight: 700; }
+.thumbnailtext h2{ font-size: 1.125rem; font-weight: 700; }
 
-.informacoes{display:flex;align-items:center;justify-self:center;gap:1rem}
-.informacoes img{width:18px;height:18px}
-.informacoes div{display:flex;align-items:center;justify-content:center;gap:.5rem}
+/* Info linha */
+.informacoes{ display: flex; align-items: center; justify-self: center; gap: 1rem; }
+.informacoes img{ width: 18px; height: 18px; }
+.informacoes div{ display: flex; align-items: center; justify-content: center; gap: .5rem; }
 
-/* Placar */
-.placa{grid-area:placa;width:100%;height:100%;background:blue}
-
+/* Placa (ads / slideshow tem seu CSS próprio) */
+.placa{
+  grid-area: placa; width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slideshow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.slider{
+  position: absolute;
+  transition: opacity 0.2s;
+  object-fit: cover;
+  opacity: 0;
+}
+.on {
+  opacity: 1;
+}
+.prev-button, .next-button{
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  background-color: #EE4D9B;
+}
 /* =========================
-   Liga / Tabela
+   LIGA / TABELA
 ========================= */
 .liga{
-  grid-area:liga;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-1);
-  width:100%;height:100%;padding:1rem .1rem .1rem;background:var(--clr-panel);
-  color:var(--clr-muted);border:1px solid var(--clr-border);border-radius:var(--radius);
+  grid-area: liga;
+  display: grid; grid-template-rows: auto 1fr; /* header + corpo rolável */
+  gap: var(--space-1);
+  width: 100%; height: 100%;
+  padding: 1rem .1rem .1rem;
+  background: var(--clr-panel); color: var(--clr-muted);
+  border: 1px solid var(--clr-border); border-radius: var(--radius);
+  max-height: 360px; /* limite visual (ajuste se preciso) */
 }
-.liga p{font-size:12px}
-.liga .Pontos{color:#fff;font-weight:700}
+.liga p{ font-size: 12px; }
+.liga .Pontos{ color: #fff; font-weight: 700; }
 
+/* Cabeçalho e linhas */
 .LegendaLiga{
-  display:grid;grid-template-columns:5fr repeat(8,1fr);align-items:center;width:100%;
-  border-bottom:1px solid var(--clr-border);
+  display: grid; align-items: center; width: 100%;
+  grid-template-columns: 5fr repeat(8, 1fr);
+  border-bottom: 1px solid var(--clr-border);
 }
-.LegendaLiga p{margin:0;text-align:center;background:transparent}
-.LegendaLiga p:first-child{text-align:left;padding-left:.5rem}
-.LegendaLiga img{width:12px;height:12px;background:transparent}
-.LegendaLiga .Clube{display:flex;align-items:center;gap:.5rem;background:transparent}
+.LegendaLiga p{ margin: 0; text-align: center; background: transparent; }
+.LegendaLiga p:first-child{ text-align: left; padding-left: .5rem; }
+.LegendaLiga img{ width: 12px; height: 12px; background: transparent; }
+.LegendaLiga .Clube{ display: flex; align-items: center; gap: .5rem; }
+
+/* Header fixo + corpo com scroll */
+.LegendaLiga--header{
+  position: sticky; top: 0; z-index: 2;
+  background: var(--clr-panel);
+}
+.LigaScroll{
+  overflow-y: auto; padding-right: .25rem; min-height: 0;
+}
+/* scrollbar */
+.LigaScroll::-webkit-scrollbar{ width: 8px; }
+.LigaScroll::-webkit-scrollbar-track{ background: #0c0c0c; border-radius: 8px; }
+.LigaScroll::-webkit-scrollbar-thumb{ background: #565656; border-radius: 8px; }
+.LigaScroll{ scrollbar-width: thin; scrollbar-color: #565656 #0c0c0c; }
 
 /* =========================
-   Página de Clube
+   PÁGINA DE CLUBE
 ========================= */
 .ClubeMain{
-  grid-template-columns:1fr 3fr 1fr;
-  grid-template-rows:.25fr 1fr .5fr 2.25fr;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: .25fr 1fr .5fr 2.25fr;
   grid-template-areas:
     "header    header    header"
-    "liga destaque clube"
-    "liga jogadoras clube"
-    "liga jogadoras  aovivo";
-  justify-content:center;align-items:center;
+    "liga      destaque  clube"
+    "liga      jogadoras clube"
+    "liga      jogadoras clube";
+  justify-content: center; align-items: center;
 }
-.Clubestitle{grid-area:clube}
-.Clubestitle h1{font-weight:700}
+.Clubestitle{ grid-area: clube; }
+.Clubestitle h1{ font-weight: 700; }
 .Clubes{
-  grid-area:clube;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
-  gap:1rem;width:100%;height:100%;
+  grid-area: clube; display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem; width: 100%; height: 100%;
 }
-.clubeicon img{width:5rem;height:5rem}
+.clubeicon img{ width: 5rem; height: 5rem; }
 
-.header{grid-area:header;display:flex;flex-direction:row;gap:1rem;width:100%;height:100%;margin:1rem 0}
-
-/* Thumbnail jogadoras */
+/* Thumbnail Jogadoras */
 .ThumbnailJogadoras{
-  grid-area:destaque;background-image:radial-gradient(ellipse,var(--clr-destaque),var(--clr-bg),var(--clr-bg));
-  border-radius:1rem;width:100%;height:100%;display:flex;flex-direction:row;padding:0% 20%;align-items:center;gap:30%;
+  grid-area: destaque;
+  display: flex; align-items: center;
+  gap: 30%; padding: 0 20%;
+  width: 100%; height: 100%;
+  border-radius: var(--radius);
+  background-image: radial-gradient(ellipse, var(--clr-destaque), var(--clr-bg), var(--clr-bg));
 }
-.ThumbnailJogadoras img{height:100%;width:4rem}
-.ThumbnailJogadoras h1{font-weight:600;font-size:36px}
+.ThumbnailJogadoras img{ width: 4rem; height: 100%; object-fit: contain; }
+.ThumbnailJogadoras h1{ font-weight: 600; font-size: 36px; }
 
-.Jogadoras{grid-area:jogadoras;width:100%;height:100%}
-.JogadorasTemplate{
-  width:100%;height:4rem;padding:.5rem;display:grid;grid-template-columns:1fr 4fr 1fr 2fr 2fr 1fr;align-items:center;
-  background:var(--clr-surface);border-left:.5rem solid #101010;
-}
-.JogadorasTemplate img{width:3rem;height:3rem}
+/* Listas de jogadoras */
+.Jogadoras{ grid-area: jogadoras; width: 100%; height: 100%; }
 .JogadorasLegenda{
-  width:100%;height:2.5rem;padding:.25rem;display:grid;grid-template-columns:1fr 4fr 1fr 2fr 2fr 1fr;align-items:center;
-  background:var(--clr-panel);border-radius:0 1rem 0 0;border-left:.5rem solid #090909;
+  width: 100%; height: 2.5rem; padding: .25rem;
+  display: grid; align-items: center;
+  grid-template-columns: 1fr 4fr 1fr 2fr 2fr 1fr;
+  background: var(--clr-panel);
+  border-radius: 0 1rem 0 0;
+  border-left: .5rem solid #090909;
 }
+.JogadorasTemplate{
+  width: 100%; height: 4rem; padding: .5rem;
+  display: grid; align-items: center;
+  grid-template-columns: 1fr 4fr 1fr 2fr 2fr 1fr;
+  background: var(--clr-surface);
+  border-left: .5rem solid #101010;
+}
+.JogadorasTemplate img{ width: 3rem; height: 3rem; object-fit: cover; }
 
 /* =========================
-   Login
+   LOGIN
 ========================= */
-.LoginMain{width:100%;height:100%;display:flex;justify-content:center;align-items:center}
+.LoginMain{
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
 .LoginContainer{
-  display:grid;width:80%;height:50%;padding:3rem;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(5,1fr);
+  display: grid; width: 80%; height: 50%; padding: 3rem; gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
     "nome     nome     nome     data"
     "email    email    gender   gender"
     "password password passwordconfirm passwordconfirm"
     "imagem   imagem   imagem   imagem"
     "term     term     term     term";
-  background:var(--clr-surface);color:var(--clr-text);gap:1rem;border-radius:1rem;
+  background: var(--clr-surface); color: var(--clr-text);
+  border-radius: var(--radius);
 }
-.LoginMain input,.LoginMain select{
-  border:1px solid var(--clr-destaque);background:transparent;color:var(--clr-text);padding:.6rem .75rem;border-radius:.5rem;
+.LoginMain input, .LoginMain select{ border: 1px solid var(--clr-destaque); }
+.LoginContainer a{ color: var(--clr-destaque); }
+.LoginContainer .name{ grid-area: nome; }
+.LoginContainer .date{ grid-area: data; }
+.LoginContainer .email{ grid-area: email; }
+.LoginContainer .gender{ grid-area: gender; }
+.LoginContainer .password{ grid-area: password; }
+.LoginContainer .passwordconfirm{ grid-area: passwordconfirm; }
+.LoginContainer .image{ grid-area: imagem; }
+.LoginContainer .term{
+  grid-area: term; display: flex; align-items: center; gap: 5rem;
 }
-.LoginMain input:focus,.LoginMain select:focus{
-  outline:none;box-shadow:0 0 0 2px rgba(238,77,155,.35);border-color:var(--clr-destaque);
-}
-.LoginContainer a{color:var(--clr-destaque);text-decoration:none}
-.LoginContainer .name{grid-area:nome}
-.LoginContainer .date{grid-area:data}
-.LoginContainer .email{grid-area:email}
-.LoginContainer .gender{grid-area:gender}
-.LoginContainer .password{grid-area:password}
-.LoginContainer .passwordconfirm{grid-area:passwordconfirm}
-.LoginContainer .image{grid-area:imagem}
-.LoginContainer .term{grid-area:term;display:flex;align-items:center;gap:5rem}
 
 /* =========================
-   Sobre Nós
+   SOBRE NÓS
 ========================= */
 .SobreNosMain{
-  grid-template-columns:2fr 2fr;grid-template-rows:.25fr 3.5fr .25fr;
-  grid-template-areas:"header header" "slideshow text" "down down";
-  justify-content:center;align-items:center;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: .25fr 3.5fr .25fr;
+  grid-template-areas:
+    "header header"
+    "slideshow text"
+    "down down";
+  justify-content: center; align-items: center;
 }
-.HistoriaSlideshow{grid-area:slideshow;width:100%;height:32rem}
-.HistoriaSlideshow img{width:100%;height:100%;object-fit:cover}
-.TextHistoria{grid-area:text;width:100%;height:32rem;line-height:1.5;color:var(--clr-muted)}
+.HistoriaSlideshow{
+  grid-area: slideshow; width: 32rem; height: 32rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TextHistoria{ grid-area: text; width: 100%; height: 32rem; }
 
 /* =========================
-   Perfil
+   DROPDOWN DA BUSCA
 ========================= */
-.PerfilMain{display:flex;justify-content:center;padding:2rem 5%}
-.PerfilCard{width:min(1100px,100%);background:var(--clr-panel);border:1px solid var(--clr-border);border-radius:1rem;overflow:hidden;animation:cardReveal .25s ease}
-.PerfilHeader{position:relative;z-index:0}
-.PerfilCover{height:140px;background:linear-gradient(90deg,rgba(238,77,155,.25),transparent),#1b1b1b}
-.PerfilAvatar{
-  position:absolute;left:1.5rem;top:72px;display:flex;align-items:flex-start;gap:1rem;pointer-events:auto;z-index:2;
+.search-results{
+  position: absolute; top: calc(50% + 1.25rem); left: 50%; transform: translateX(-50%);
+  width: 95%; max-height: 60vh; overflow: auto;
+  margin: .5rem 0 0; padding: .25rem; list-style: none;
+  background: var(--clr-panel); color: var(--clr-text);
+  border: 1px solid var(--clr-border); border-radius: .75rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,.4); z-index: 20;
 }
-.PerfilAvatar img{
-  width:96px;height:96px;border-radius:50%;border:3px solid #000;object-fit:cover;background:#222;
-  transition:transform .2s ease,box-shadow .25s ease;position:relative;z-index:1;
+.search-item{
+  display: grid; grid-template-columns: 2rem 1fr; align-items: center;
+  gap: .75rem; padding: .5rem .6rem; border-radius: .5rem; cursor: pointer;
 }
-.PerfilAvatarBtn{
-  position:absolute;top:-10px;left:78px;z-index:3;padding:.45rem .65rem;border:1px solid var(--clr-border);
-  border-radius:.5rem;background:var(--clr-surface);cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;
-}
-.PerfilAvatarBtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.PerfilBasic{padding:1rem 1.5rem 0 1.5rem;margin-left:7.5rem}
-.PerfilBasic h1{margin:0;font-size:1.5rem}
-.muted{color:var(--clr-muted);margin-top:.25rem}
-
-.PerfilTabs{position:relative;z-index:1;display:flex;gap:.5rem;border-top:1px solid var(--clr-border);padding:1rem 1rem 0;margin-top:.5rem}
-.PerfilTabs button{
-  display:inline-flex;align-items:center;padding:.45rem .75rem;border-radius:.5rem;background:transparent;border:1px solid transparent;
-  cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease;
-}
-.PerfilTabs button:hover{background:#1a1a1a;border-color:var(--clr-border)}
-.PerfilTabs button.active{background:var(--clr-surface);border-color:var(--clr-border);box-shadow:none;color:#fff}
-
-.PerfilForm{display:grid;gap:1rem;padding:1rem}
-.field{display:grid;gap:.4rem}
-.field label{color:#bbb;font-size:.9rem}
-.field input,.field select,.field textarea{
-  width:100%;border:1px solid var(--clr-border);background:#141414;color:#fff;padding:.65rem .8rem;border-radius:.5rem;
-  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
-}
-.field textarea{resize:vertical}
-.field input:hover,.field select:hover,.field textarea:hover{border-color:#ff7bbb}
-.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 3px rgba(238,77,155,.25)}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-@media (max-width:800px){.grid2{grid-template-columns:1fr}}
-
-.actions{display:flex;gap:.75rem;justify-content:flex-end;padding-top:.5rem}
-.btnPrimary{background:var(--clr-destaque);color:#000;border:none;padding:.6rem 1rem;border-radius:.6rem;cursor:pointer;font-weight:700;position:relative;transition:transform .08s ease,filter .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
-.btnPrimary:hover{box-shadow:0 8px 20px rgba(238,77,155,.25);filter:brightness(1.03)}
-.btnPrimary:active{transform:translateY(1px)}
-.btnDanger{background:#b3261e;color:#fff;border:none;padding:.6rem 1rem;border-radius:.6rem;cursor:pointer;position:relative;transition:transform .08s ease,filter .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
-.btnDanger:hover{filter:brightness(1.05);box-shadow:0 8px 20px rgba(179,38,30,.25)}
-.danger{margin-top:1rem;border-top:1px dashed var(--clr-border);padding-top:1rem}
-
-/* ===== Toggles de Notificação ===== */
-.switchList{display:flex;gap:1.25rem;flex-wrap:wrap;align-items:center}
-.switchItem{display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;user-select:none;position:relative}
-.switchItem input{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden}
-.switchVisual{
-  width:44px;height:24px;border-radius:9999px;background:#3a3a3a;border:1px solid var(--clr-border);
-  position:relative;transition:background .2s ease,border-color .2s ease;
-}
-.switchVisual::after{
-  content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;
-  box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s ease;
-}
-.switchItem input:checked + .switchVisual{background:var(--clr-destaque);border-color:transparent}
-.switchItem input:checked + .switchVisual::after{transform:translateX(20px)}
-.switchItem input:focus-visible + .switchVisual{outline:2px solid var(--clr-destaque);outline-offset:2px}
-.switchLabel{color:var(--clr-text)}
+.search-item:hover, .search-item.is-active{ background: rgba(255,255,255,.06); }
+.search-item img{ width: 2rem; height: 2rem; object-fit: contain; border-radius: .25rem; background: #222; }
+.search-item__text{ display: flex; flex-direction: column; line-height: 1.2; }
+.search-item__label{ font-weight: 700; }
+.search-item__sub{ opacity: .7; font-size: .875rem; }
 
 /* =========================
-   Tema claro (tokens + ajustes)
+   LISTA CLUBES (SCROLL)
 ========================= */
-html[data-theme="light"]{
-  --clr-bg:#f4f5f7;
-  --clr-surface:#ffffff;
-  --clr-panel:#f9fafb;
-  --clr-text:#111827;
-  --clr-muted:#6b7280;
-  --clr-border:#e5e7eb;
+.Clubes--scrollY{
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem; max-height: 420px; overflow-y: auto; padding-right: .25rem;
+  border: 1px solid var(--clr-border); border-radius: .75rem;
 }
-/* Navbar claro */
-html[data-theme="light"] .Nav-Link,
-html[data-theme="light"] .Perfil-Link{color:var(--clr-text)}
-html[data-theme="light"] .Nav-Link:hover,
-html[data-theme="light"] .Perfil-Link:hover{color:var(--clr-destaque)}
-/* Inputs claros */
-html[data-theme="light"] .field input,
-html[data-theme="light"] .field select,
-html[data-theme="light"] .field textarea{background:#fff;color:var(--clr-text);border:1px solid #d0d5dd}
-html[data-theme="light"] .field input::placeholder,
-html[data-theme="light"] .field textarea::placeholder{color:#9ca3af}
-/* Cartão/cover claros */
-html[data-theme="light"] .PerfilCard{border-color:var(--clr-border);background:var(--clr-panel)}
-html[data-theme="light"] .PerfilCover{background:linear-gradient(90deg,rgba(238,77,155,.25),transparent),#eef2ff}
-/* Tabs claras */
-html[data-theme="light"] .PerfilTabs button{color:#374151;border-color:transparent}
-html[data-theme="light"] .PerfilTabs button:hover{background:#f3f4f6;border-color:#e5e7eb}
-html[data-theme="light"] .PerfilTabs button.active{background:#fff;border-color:#d1d5db;color:#111827;font-weight:700}
-/* Liga/cards claros */
-html[data-theme="light"] .liga{background:#fff;color:#374151;border-color:#e5e7eb}
-html[data-theme="light"] .aoVivo{background:#fff;border-color:#e5e7eb}
+.Clubes--scrollY::-webkit-scrollbar{ width: 8px; }
+.Clubes--scrollY::-webkit-scrollbar-track{ background: #101010; border-radius: 8px; }
+.Clubes--scrollY::-webkit-scrollbar-thumb{ background: #565656; border-radius: 8px; }
+.Clubes--scrollY{ scrollbar-width: thin; scrollbar-color: #565656 #101010; }
+.clubeicon img{ width: 64px; height: 64px; object-fit: contain; }
+.clubeicon p{ margin-top: .35rem; font-size: .9rem; }
+/* Estado dos slides */
+.slider { display: none; }
+.slider.on { display: block; }
 
-/* =========================
-   Subtle effects / nav underline
-========================= */
-@keyframes cardReveal{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
-.Nav-Link,.Perfil-Link{position:relative;line-height:1}
-.Nav-Link.active,.Perfil-Link.active{border-bottom:0!important}
-.Nav-Link::after,.Perfil-Link::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;width:0;background:var(--clr-destaque);
-  transition:width .25s ease;pointer-events:none;
-}
-.Nav-Link:hover::after,.Perfil-Link:hover::after,
-.Nav-Link.active::after,.Perfil-Link.active::after{width:100%}
+/* Se quiser transição “fade” sem inventar classe */
+.slider { opacity: 0; transition: opacity .35s ease; }
+.slider.on { display: block; opacity: 1; }
 
-/* =========================
-   Responsividade
-========================= */
-@media (max-width:1100px){
-  .Nav-Link-Div{width:auto;gap:1.25rem}
-  .search-bar-Div{width:40%}
-  .PerfilDiv{width:auto}
-  .PerfilBasic{margin-left:6.5rem}
+/* Botões (se não houver estilo) */
+.prev-button, .next-button{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 2rem; height: 2rem; display: grid; place-items: center;
+  border: 1px solid var(--clr-border); border-radius: .5rem;
+  background: rgba(0,0,0,.35); color: #fff; cursor: pointer; z-index: 2;
 }
-@media (max-width:820px){
-  nav{flex-wrap:wrap;height:auto;gap:1rem;padding:.4rem .75rem}
-  .search-bar-Div{order:3;width:100%}
-  .search-bar{width:100%}
-  .PerfilCard{border-radius:.75rem}
-  .PerfilAvatar img{width:80px;height:80px}
-  .PerfilAvatar{left:1rem;top:84px}
-  .PerfilBasic{margin-left:5.5rem;padding-left:.25rem}
-  .PerfilForm{padding:.75rem}
-  .grid2{grid-template-columns:1fr}
+.prev-button{ left: .5rem; }
+.next-button{ right: .5rem; }
+
+/* Garanta que os containers são position:relative
+   (placa e HistoriaSlideshow já existem no seu CSS; adicione se faltar) */
+.placa, .HistoriaSlideshow{ position: relative; overflow: hidden; }
+/* ====== AUTH / LOGIN ====== */
+.AuthMain{
+  min-height: calc(100vh - var(--nav-h));
+  padding: 2rem 1rem;
+  display: grid;
+  place-items: center;
 }
-@media (max-width:560px){
-  .Nav-Link,.Perfil-Link{height:2.5rem}
-  .Nav-Link::after,.Perfil-Link::after{bottom:.15rem}
-  .PerfilMain{padding:1rem}
-  .PerfilCover{height:120px}
-  .PerfilAvatar img{width:68px;height:68px}
+
+.AuthCard{
+  width: min(560px, 100%);
+  background: var(--clr-panel);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-border);
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  padding: 1.25rem;
+  animation: cardReveal .25s ease;
 }
-/* App.css */
-.PerfilDiv {
+
+.AuthHeader{
+  margin-bottom: 1rem;
+}
+.AuthHeader h1{
+  margin: 0 0 .25rem 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.AuthHeader .muted{
+  color: var(--clr-muted);
+}
+
+.AuthForm{
+  display: grid;
+  gap: 1rem;
+}
+
+/* Se já existir .field no seu CSS, isso só refina */
+.field label{
+  color: #bbb;
+  font-size: .9rem;
+}
+.field input{
+  width: 100%;
+  border: 1px solid var(--clr-border);
+  background: #141414;
+  color: var(--clr-text);
+  padding: .65rem .8rem;
+  border-radius: .5rem;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.field input::placeholder{ color:#8b8b8b; }
+.field input:hover{ border-color: #ff7bbb; }
+.field input:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(238,77,155,.25);
+  border-color: var(--clr-destaque);
+}
+
+/* Avatar */
+.AvatarRow{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.AvatarPreview{
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #222;
+  border: 2px solid var(--clr-border);
+}
+.btnGhost{
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
+  gap: .5rem;
+  padding: .55rem .8rem;
+  background: transparent;
+  color: var(--clr-text);
+  border: 1px solid var(--clr-border);
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
 }
-.PerfilDiv .ImgPerfil {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  object-fit: cover;
+.btnGhost:hover{ background: #1a1a1a; border-color: #777; }
+
+/* Ações (já existe .actions no seu CSS; isso só garante espaçamento) */
+.actions{
+  display: flex;
+  gap: .75rem;
+  justify-content: flex-end;
+  padding-top: .25rem;
 }
-.PerfilDiv .Perfil-Link {
-  color: inherit;
+
+/* Rodapé / troca de modo */
+.AuthFooter{
+  display: flex;
+  justify-content: center;
+  margin-top: .75rem;
+}
+.linkBtn{
+  background: transparent;
+  border: none;
+  color: var(--clr-destaque);
   font-weight: 600;
-  text-transform: none;
+  cursor: pointer;
+  padding: .25rem .35rem;
+}
+.linkBtn:hover{ text-decoration: underline; }
+
+.small{ font-size: .85rem; }
+
+/* Light theme refinamentos (opcional) */
+html[data-theme="light"] .AuthCard{ background:#fff; border-color:#e5e7eb; }
+html[data-theme="light"] .field input{ background:#fff; color:#111827; border-color:#d0d5dd; }
+html[data-theme="light"] .btnGhost:hover{ background:#f3f4f6; border-color:#d1d5db; }
+
+/* Responsivo */
+@media (max-width: 560px){
+  .AuthCard{ padding: 1rem; }
+  .AvatarPreview{ width: 64px; height: 64px; }
+  .AuthHeader h1{ font-size: 1.35rem; }
 }

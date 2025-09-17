@@ -29,9 +29,7 @@ export default function App() {
   }, []);
 
   const avatarSrc = avatar || "/imgs/avatar-placeholder.png";
-  const displayName =
-    (logged && name ? name.split(" ")[0] : name) || "Entrar"; // mostra o primeiro nome quando logado
-  const profileHref = logged ? "/perfil" : "/login";
+  const displayName = (logged && name ? name.split(" ")[0] : name) || "Entrar";
 
   return (
     <div className="App">
@@ -61,8 +59,8 @@ export default function App() {
           <input type="text" className="search-bar" placeholder="Buscar..." />
         </div>
 
-        {/* Avatar + nome: clica e entra direto (perfil se logado, login se não) */}
-        <Link to={profileHref} className="PerfilDiv" title={logged ? "Abrir seu perfil" : "Entrar"}>
+        {/* Agora o bloco leva SEMPRE para /home */}
+        <Link to="/" className="PerfilDiv" title="Ir para Início">
           <img src={avatarSrc} alt={name || "Avatar"} className="ImgPerfil" />
           <span className="Perfil-Link">{displayName}</span>
         </Link>

@@ -8,6 +8,7 @@ import Home from './routes/Home.jsx';
 import SobreNos from './routes/SobreNos.jsx';
 import Clubes from './routes/Clubes.jsx';
 import Login from './routes/Login.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
