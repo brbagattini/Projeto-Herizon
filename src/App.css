@@ -521,3 +521,194 @@ html[data-theme="light"] .btnGhost:hover{ background:#f3f4f6; border-color:#d1d5
   .AvatarPreview{ width: 64px; height: 64px; }
   .AuthHeader h1{ font-size: 1.35rem; }
 }
+/* =========================
+   SAFE: evitar scroll lateral “fantasma”
+========================= */
+html, body, #root, main { max-width: 100%; overflow-x: hidden; }
+main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
+
+/* =========================
+   Tablet (≤ 1024px)
+========================= */
+@media (max-width: 1024px) {
+  /* NAV */
+  nav { gap: .75rem; padding: 0 .75rem; }
+  .Nav-Link-Div { width: auto; gap: .75rem; }
+  .search-bar-Div { width: 50%; }
+  .PerfilDiv { width: auto; gap: .75rem; font-size: 1rem; }
+  .PerfilDiv img { width: 2.5rem; height: 2.5rem; }
+
+  /* HOME (2 colunas) */
+  .IndexMain {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "header      header"
+      "ultimojogo  placa"
+      "Thumbnail   Thumbnail"
+      "liga        partidas"
+      "video       video";
+  }
+
+  /* Último jogo menor */
+  .UltimoJogoContainer { gap: .75rem; }
+  .UltimoJogoContainer h1 { font-size: 20px; }
+  .UltimoJogoContainer img { width: 3.25rem; height: 3.25rem; }
+
+  /* Liga: cabeçalho compacto */
+  .liga { max-height: 320px; }
+  .liga p { font-size: 11px; }
+  .LegendaLiga { grid-template-columns: 4fr repeat(8, 1fr); }
+
+  /* Próximas partidas / vídeo */
+  .proximascontainer { height: 4.5rem; }
+  .clubeproximas { gap: 1.25rem; }
+
+  /* Clubes (grid) */
+  .Clubes { grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+  .clubeicon img { width: 4.25rem; height: 4.25rem; }
+
+  /* Thumbnail Jogadoras mais apertado */
+  .ThumbnailJogadoras { gap: 15%; padding: 0 10%; }
+  .ThumbnailJogadoras h1 { font-size: 28px; }
+  .ThumbnailJogadoras img { width: 3.25rem; }
+
+  /* Lista Jogadoras: permite rolar horizontalmente quando apertar */
+  .Jogadoras { overflow-x: auto; }
+  .JogadorasLegenda,
+  .JogadorasTemplate { min-width: 720px; }
+
+  /* CLUBE (2 colunas) */
+  .ClubeMain {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header      header"
+      "destaque    clube"
+      "jogadoras   liga";
+  }
+
+  /* SOBRE NÓS (colocar slideshow e texto emparelhados) */
+  .SobreNosMain {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header"
+      "slideshow text"
+      "down down";
+  }
+  .HistoriaSlideshow { width: 100%; height: 26rem; }
+  .TextHistoria { height: 26rem; }
+}
+
+/* =========================
+   Celular (≤ 680px)
+========================= */
+@media (max-width: 680px) {
+  /* NAV empilhada */
+  nav { flex-wrap: wrap; height: auto; gap: .5rem; padding: .5rem .75rem; }
+  .Nav-Link-Div { order: 1; width: 100%; justify-content: center; gap: .75rem; }
+  .search-bar-Div { order: 3; width: 100%; height: auto; }
+  .search-bar { width: 100%; height: 2.25rem; }
+  .PerfilDiv { order: 2; width: 100%; justify-content: center; gap: .5rem; }
+  .PerfilDiv img { width: 2rem; height: 2rem; }
+
+  /* HOME (1 coluna) */
+  .IndexMain {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas:
+      "header"
+      "ultimojogo"
+      "Thumbnail"
+      "liga"
+      "partidas"
+      "placa"
+      'video';
+    /* vídeo pode ficar de fora no mobile ou abaixo */
+  }
+
+  /* Último Jogo compacto */
+  .UltimoJogoContainer { gap: .5rem; padding: .5rem; }
+  .UltimoJogoContainer h1 { font-size: 18px; }
+  .UltimoJogoContainer img { width: 2.5rem; height: 2.5rem; }
+
+  /* Liga: mais baixa e com fonte menor */
+  .liga { max-height: 280px; padding-top: .5rem; }
+  .liga p { font-size: 10px; }
+  .LegendaLiga { grid-template-columns: 3fr repeat(8, 1fr); }
+  .LigaScroll { padding-right: .15rem; }
+
+  /* Próximas partidas / placa */
+  .proximascontainer { height: auto; padding: .5rem; }
+  .clubeproximas { gap: .75rem; margin-left: 0; }
+  .clubeproximas img { width: 2.25rem; height: 2.25rem; }
+
+  /* Thumbnail / destaque */
+  .thumbnail { gap: 10%; padding: 1rem; }
+  .thumbnailtext img { width: 3.5rem; height: 3.5rem; }
+  .thumbnailtext h1 { font-size: 1.5rem; }
+  .thumbnailtext h2 { font-size: 1rem; }
+
+  /* CLUBE (1 coluna) */
+  .ClubeMain {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "header"
+      "destaque"
+      "clube"
+      "jogadoras";
+  }
+  .Clubestitle { margin-top: .5rem; }
+  .Clubes { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+  .clubeicon img { width: 3.5rem; height: 3.5rem; }
+
+  /* Thumbnail Jogadoras empilhada */
+  .ThumbnailJogadoras {
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .ThumbnailJogadoras h1 { font-size: 22px; }
+  .ThumbnailJogadoras img { width: 3rem; height: auto; }
+
+  /* Lista Jogadoras: rolagem horizontal garantida */
+  .Jogadoras { overflow-x: auto; }
+  .JogadorasLegenda,
+  .JogadorasTemplate { min-width: 640px; }
+  .JogadorasTemplate img { width: 2.5rem; height: 2.5rem; }
+
+  /* SOBRE NÓS (1 coluna) */
+  .SobreNosMain {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "header"
+      "slideshow"
+      "text";
+  }
+  .HistoriaSlideshow { width: 100%; height: 18rem; }
+  .TextHistoria { height: auto; margin-top: .75rem; }
+
+  /* Dropdown busca mais contido */
+  .search-results {
+    width: 92%;
+    top: calc(100% + .5rem);
+  }
+
+  /* Slider botões menores */
+  .prev-button, .next-button { width: 1.75rem; height: 1.75rem; }
+}
+
+/* =========================
+   Pequenos (≤ 400px)
+========================= */
+@media (max-width: 400px) {
+  .Nav-Link { margin: 0 .25rem; }
+  .UltimoJogoContainer h1 { font-size: 16px; }
+  .thumbnailtext h1 { font-size: 1.25rem; }
+  .thumbnailtext h2 { font-size: .9rem; }
+  .clubeicon p { font-size: .8rem; }
+}
