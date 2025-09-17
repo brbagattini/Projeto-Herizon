@@ -1,12 +1,55 @@
-# React + Vite
+# Projeto Herizon — Portal de Notícias Esportivas (Futebol)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Vite + React • Rotas com React Router • CSS com design tokens • Sliders e modais • Pronto para GitHub Pages
 
-Currently, two official plugins are available:
+**Demo**: https://brbagattini.github.io/Projeto-Herizon/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Visão geral
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+O **Herizon** é um site de notícias esportivas focado em futebol, com:
+- **Home** com “Último Jogo” (placar com escudos), **Próximas Partidas**, **Destaque**, **Tabela da Liga** (header fixo + scroll) e **placa de propaganda** em **slideshow**.
+- **Atletas e Clubes**: grade de clubes com **scroll**, modais de detalhes do clube, lista de jogadoras com **modal** individual e uma **thumbnail** de jogadora em destaque.
+- **Sobre nós**: **slideshow** histórico automático.
+- **Busca global** no **nav** (clubes e jogadoras) com dropdown + abertura de modal.
+- **Autenticação local** (mock): login/cadastro, avatar com preview e tema salvo por perfil (no navegador).
+- **Pronto para integrar API** (API-Football/RapidAPI) via proxy do Vite.
+
+---
+
+## 🧰 Stack
+
+- **React 19** + **Vite 7**
+- **React Router v7** (recomendado `HashRouter` em GitHub Pages)
+- **CSS** com design tokens (variáveis CSS em `:root`)
+- (Opcional) **Tailwind v4** via `@import "tailwindcss";` — o projeto funciona só com CSS também.
+- Deploy com **GitHub Pages** (`gh-pages`)
+
+---
+
+## 📦 Requisitos
+
+- Node 18+ (recomendado 20+)
+- npm / yarn / pnpm
+
+---
+
+## 🚀 Como rodar
+
+```bash
+git clone https://github.com/brbagattini/Projeto-Herizon.git
+cd Projeto-Herizon
+npm install
+npm i react-router-dom
+npm run dev
+
+---
+
+## Participantes
+
+- Vitor Reis Bugallo Teixeira - RM 562208
+- Bruno Bagattini Fernandes - RM 562863
+- Nathália dos Santos Cordeiro - RM 563072
+- Luigi Ferrarini Borghi - RM 563096
+- Arthur Ferreira Alves dos Santos - RM 564958
