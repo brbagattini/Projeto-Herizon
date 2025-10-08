@@ -5,7 +5,7 @@ import "../App.css";
 
 export default function Login() {
   const nav = useNavigate();
-  const [mode, setMode] = useState("login"); // "login" | "signup"
+  const [mode, setMode] = useState("login");
   const [form, setForm] = useState({
     name: "",
     email: "",

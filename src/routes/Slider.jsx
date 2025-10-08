@@ -1,4 +1,3 @@
-// src/utils/slider.js
 export function initSlider(container, { auto = true, interval = 4000 } = {}) {
   if (!container) return () => {};
 
@@ -22,24 +21,19 @@ export function initSlider(container, { auto = true, interval = 4000 } = {}) {
   function nextSlide() { goTo(current + 1); }
   function prevSlide() { goTo(current - 1); }
 
-  // eventos
   btnNext?.addEventListener('click', nextSlide);
   btnPrev?.addEventListener('click', prevSlide);
 
-  // autoplay opcional
   function start() { if (auto && slides.length > 1) timerId = setInterval(nextSlide, interval); }
   function stop()  { if (timerId) clearInterval(timerId), (timerId = null); }
 
-  // pause no hover do container
   container.addEventListener('mouseenter', stop);
   container.addEventListener('mouseleave', start);
 
-  // inicia
   hideSlides();
   showSlide(current);
   start();
 
-  // cleanup p/ React desmontar sem vazamento
   return () => {
     stop();
     btnNext?.removeEventListener('click', nextSlide);

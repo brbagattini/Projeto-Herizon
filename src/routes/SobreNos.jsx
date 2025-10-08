@@ -1,4 +1,3 @@
-// src/routes/SobreNos.jsx
 import "../App.css";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
@@ -14,7 +13,6 @@ export default function SobreNos() {
     if (!histRef.current || typeof initSlider !== "function") return;
     const destroy = initSlider(histRef.current, { auto: true, interval: 5000 });
     return () => {
-      // garante desmontagem segura mesmo se initSlider não retornar nada
       if (typeof destroy === "function") destroy();
     };
   }, []);
