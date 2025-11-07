@@ -58,9 +58,7 @@ export default function Clubes() {
         <img src={Amanda} alt="Amanda Gutierres" className="h-full max-h-40 object-contain" />
       </div>
 
-      {/* JOGADORAS LISTA */}
       <div className="Jogadoras w-full bg-[var(--clr-panel)] rounded-[var(--radius)] border border-[var(--clr-border)] overflow-hidden">
-        {/* HEADER FIXO */}
         <div className="sticky top-0 grid grid-cols-[1fr_4fr_1fr_2fr_2fr_1fr] bg-[var(--clr-surface)] text-[var(--clr-destaque)] font-semibold text-sm py-2 px-3 border-b border-[var(--clr-border)]">
           <h1></h1>
           <h1>Nome</h1>
@@ -70,7 +68,6 @@ export default function Clubes() {
           <h1>Jogos</h1>
         </div>
 
-        {/* SCROLL DA LISTA */}
         <div className="max-h-[420px] overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--clr-destaque)] scrollbar-track-[var(--clr-bg)]">
           {jogadoras.map((j) => (
             <div
