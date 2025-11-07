@@ -1,291 +1,215 @@
-import '../App.css'
+import '../App.css';
 import clock from '../Imagens/clock.svg';
 import mappin from '../Imagens/map-pin.svg';
-import { jogadoras } from "./data";
-import { clubes } from "./data";
-import { useEffect, useRef } from 'react';
-import { initSlider } from './Slider'
-import Propaganda1 from '../Imagens/Propaganda 1.jpg'
-import Propaganda2 from '../Imagens/Propaganda 2.jpg'
-import Propaganda3 from '../Imagens/Propaganda 3.jpg'
-
-const ads = [
-  { src: "/ads/ad1.jpg", alt: "Patrocinador 1", href: "https://exemplo1.com" },
-  { src: "/ads/ad2.jpg", alt: "Patrocinador 2", href: "https://exemplo2.com" },
-  { src: "/ads/ad3.jpg", alt: "Patrocinador 3", href: "https://exemplo3.com" },
-];
-
-const Amazonia = clubes[0];
-const America = clubes[1];
-const Bahia = clubes[2];
-const Corinthians = clubes[3];
-const Cruzeiro = clubes[4];
-const Ferroviária = clubes[5];
-const Flamengo = clubes[6];
-const Fluminense = clubes[7];
-const Grêmio = clubes[8];
-const Inter = clubes[9];
-const Juventude = clubes[10];
-const Palmeiras = clubes[11];
-const Real = clubes[12];
-const RedBull = clubes[13];
-const SaoPaulo = clubes[14];
-const Sport = clubes[15];
+import { useEffect, useRef, useState } from 'react';
+import { initSlider } from './Slider';
+import Propaganda1 from '../Imagens/Propaganda 1.jpg';
+import Propaganda2 from '../Imagens/Propaganda 2.jpg';
+import Propaganda3 from '../Imagens/Propaganda 3.jpg';
 
 function Home() {
   const placaRef = useRef(null);
+  const [clubes, setClubes] = useState([]);
+  const [jogadoras, setJogadoras] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState(null);
 
   useEffect(() => {
-    const destroy = initSlider(placaRef.current, { auto: true, interval: 4000 });
-    return destroy;
+    if (placaRef.current) {
+      const destroy = initSlider(placaRef.current, { auto: true, interval: 4000 });
+      return destroy;
+    }
   }, []);
 
+  useEffect(() => {
+    async function carregarDados() {
+      try {
+        const [resTimes, resJogadoras] = await Promise.all([
+          fetch("https://690d2f51a6d92d83e850b780.mockapi.io/soccerapi/api/v1/times"),
+          fetch("https://690d2f51a6d92d83e850b780.mockapi.io/soccerapi/api/v1/jogadoras")
+        ]);
+
+        if (!resTimes.ok || !resJogadoras.ok) {
+          throw new Error("Erro ao carregar dados da API");
+        }
+
+        const timesData = await resTimes.json();
+        const jogadorasData = await resJogadoras.json();
+
+        setClubes(timesData);
+        setJogadoras(jogadorasData);
+      } catch (err) {
+        console.error(err);
+        setErro(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    carregarDados();
+  }, []);
+
+  if (loading) return <div className="text-center py-10 text-white">Carregando...</div>;
+  if (erro) return <div className="text-center py-10 text-red-500">{erro}</div>;
+
+  const Corinthians = clubes.find(c => c.nome.includes("Corinthians"));
+  const Cruzeiro = clubes.find(c => c.nome.includes("Cruzeiro"));
+  const Palmeiras = clubes.find(c => c.nome.includes("Palmeiras"));
+
   return (
-    <>
-    <main className='IndexMain'>
-      <div className='header'>
-        <a href="/clubes"><p>Avançar</p></a>
-      </div>
+    <main className="IndexMain">
 
-      <div className="placa" ref={placaRef}>
-        {/* SLIDES: classe .slider */}
-        <div className="slider"><img src={Propaganda1} alt="Anúncio 1" /></div>
-        <div className="slider"><img src={Propaganda2} alt="Anúncio 2" /></div>
-        <div className="slider"><img src={Propaganda3} alt="Anúncio 3" /></div>
+      {/* HEADER SUPERIOR */}
+      <header className="header flex justify-end items-center w-full h-16 px-8 text-white">
+        <a href="/clubes" className="text-pink-500 font-bold hover:underline">Avançar</a>
+      </header>
 
-        {/* BOTÕES: suas classes */}
+      {/* SLIDER */}
+      <div className="placa relative w-full overflow-hidden" ref={placaRef}>
+        <div className="slider"><img src={Propaganda1} alt="Anúncio 1" className="w-full object-cover" /></div>
+        <div className="slider"><img src={Propaganda2} alt="Anúncio 2" className="w-full object-cover" /></div>
+        <div className="slider"><img src={Propaganda3} alt="Anúncio 3" className="w-full object-cover" /></div>
+
         <button className="prev-button" aria-label="Anterior">‹</button>
         <button className="next-button" aria-label="Próximo">›</button>
       </div>
-        <div className='ultimoJogo'>
-          <div className='UltimoJogoContainer'>
-              <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`}/>
-              <h1 id='ultimoJogoGolsA'>1</h1>
-            <h1>X</h1>
-              <h1 id='ultimoJogoGolsB'>0</h1>
-              <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
+
+      {/* PLACAR MAIOR SUPERIOR ESQUERDO */}
+      <section className="ultimojogo flex items-center justify-center py-8">
+        <div className="flex items-center justify-center border-2 border-pink-500 rounded-2xl px-8 py-5 gap-6 bg-zinc-800 text-white shadow-lg">
+          <img src={Corinthians?.escudo} alt="Corinthians" className="w-14 h-14" />
+          <div className="flex items-center gap-2">
+            <h1 className="text-3xl font-bold">1</h1>
+            <h1 className="text-xl font-bold">X</h1>
+            <h1 className="text-3xl font-bold">0</h1>
+          </div>
+          <img src={Cruzeiro?.escudo} alt="Cruzeiro" className="w-14 h-14" />
+        </div>
+      </section>
+
+
+      {/* THUMBNAIL CENTRAL ROSA */}
+      <div className="thumbnail bg-pink-600 text-white rounded-3xl mx-auto my-6 py-8 px-10 max-w-5xl text-center shadow-xl">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="flex flex-col items-center">
+            <img src={Corinthians?.escudo} alt={Corinthians?.nome} className="w-20 h-20 mb-2" />
+            <h1 className="text-2xl font-bold">{Corinthians?.nome}</h1>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-extrabold">VS</h2>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <img src={Cruzeiro?.escudo} alt={Cruzeiro?.nome} className="w-20 h-20 mb-2" />
+            <h1 className="text-2xl font-bold">{Cruzeiro?.nome}</h1>
           </div>
         </div>
-        <div className='thumbnail'>
-          <div className='thumbnailtext'>
-            <div className='thumbnailtimeA'>
-              <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`}/>
-              <h1>Corinthians</h1>
-              <h2>VS</h2>
-            </div>
-            <div className='thumbnailtimeB'>
-              <h1>Cruzeiro</h1>
-              <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
-            </div>
-            <div className='informacoes'>
-              <div className='Local'>
-                <img src={mappin} alt="" />
-                <p>Morumbi</p>
-              </div>
-              <div className='Hora'>
-                <img src={clock} alt="" />
-                <p>Morumbi</p>
-              </div>
-            </div>
+
+        <div className="flex justify-center gap-8 mt-5 text-sm md:text-base">
+          <div className="flex items-center gap-2">
+            <img src={mappin} alt="" className="w-4" /> Morumbi
+          </div>
+          <div className="flex items-center gap-2">
+            <img src={clock} alt="" className="w-4" /> 14/09 10:30
           </div>
         </div>
-        <div className='liga'>
-          <div className="LigaScroll">
-            <div className='LegendaLiga'>
-              <p>Clubes</p><p className='Pontos'>Pts</p><p>Pj</p><p>V</p><p>E</p><p>D</p><p>GM</p><p>GC</p><p>SG</p>
-            </div><div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`} />
-    <p>Cruzeiro</p>
-  </div>
-  <p className='Pontos'>36</p><p>15</p><p>11</p><p>3</p><p>1</p><p>35</p><p>15</p><p>20</p>
-</div>
+      </div>
 
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`} />
-    <p>Corinthians</p>
-  </div>
-  <p className='Pontos'>34</p><p>15</p><p>10</p><p>4</p><p>1</p><p>46</p><p>12</p><p>34</p>
-</div>
 
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={SaoPaulo?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${SaoPaulo?.nome || 'São Paulo'}`} />
-    <p>São Paulo</p>
-  </div>
-  <p className='Pontos'>33</p><p>15</p><p>10</p><p>3</p><p>2</p><p>31</p><p>10</p><p>21</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Palmeiras?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Palmeiras?.nome || 'Palmeiras'}`} />
-    <p>Palmeiras</p>
-  </div>
-  <p className='Pontos'>30</p><p>15</p><p>9</p><p>3</p><p>3</p><p>38</p><p>20</p><p>18</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Flamengo?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Flamengo?.nome || 'Flamengo'}`} />
-    <p>Flamengo</p>
-  </div>
-  <p className='Pontos'>27</p><p>15</p><p>8</p><p>3</p><p>4</p><p>31</p><p>19</p><p>12</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Ferroviária?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Ferroviária?.nome || 'Ferroviária'}`} />
-    <p>Ferroviária</p>
-  </div>
-  <p className='Pontos'>25</p><p>15</p><p>7</p><p>4</p><p>4</p><p>24</p><p>16</p><p>8</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Bahia?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Bahia?.nome || 'Bahia'}`} />
-    <p>Bahia</p>
-  </div>
-  <p className='Pontos'>24</p><p>15</p><p>7</p><p>3</p><p>5</p><p>26</p><p>22</p><p>4</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={RedBull?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${RedBull?.nome || 'Red Bull Bragantino'}`} />
-    <p>Bragantino</p>
-  </div>
-  <p className='Pontos'>20</p><p>15</p><p>5</p><p>5</p><p>5</p><p>20</p><p>16</p><p>4</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={America?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${America?.nome || 'América-MG'}`} />
-    <p>América-MG</p>
-  </div>
-  <p className='Pontos'>19</p><p>15</p><p>5</p><p>4</p><p>6</p><p>18</p><p>20</p><p>-2</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Fluminense?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Fluminense?.nome || 'Fluminense'}`} />
-    <p>Fluminense</p>
-  </div>
-  <p className='Pontos'>18</p><p>15</p><p>4</p><p>6</p><p>5</p><p>18</p><p>20</p><p>-2</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Grêmio?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Grêmio?.nome || 'Grêmio'}`} />
-    <p>Grêmio</p>
-  </div>
-  <p className='Pontos'>17</p><p>15</p><p>3</p><p>8</p><p>4</p><p>23</p><p>21</p><p>2</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Inter?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Inter?.nome || 'Internacional'}`} />
-    <p>Internacional</p>
-  </div>
-  <p className='Pontos'>14</p><p>15</p><p>3</p><p>5</p><p>7</p><p>17</p><p>29</p><p>-12</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Real?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Real?.nome || 'Real Brasília'}`} />
-    <p>Real Brasília</p>
-  </div>
-  <p className='Pontos'>12</p><p>15</p><p>3</p><p>3</p><p>9</p><p>15</p><p>36</p><p>-21</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Juventude?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Juventude?.nome || 'Juventude'}`} />
-    <p>Juventude</p>
-  </div>
-  <p className='Pontos'>10</p><p>15</p><p>2</p><p>4</p><p>9</p><p>10</p><p>27</p><p>-17</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Amazonia?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Amazonia?.nome || '3B Amazônia'}`} />
-    <p>3B Amazônia</p>
-  </div>
-  <p className='Pontos'>7</p><p>15</p><p>2</p><p>1</p><p>12</p><p>11</p><p>53</p><p>-42</p>
-</div>
-
-<div className='LegendaLiga'>
-  <div className='Clube'>
-    <img src={Sport?.escudo || '/imgs/clubes/placeholder.png'} alt={`Escudo do ${Sport?.nome || 'Sport'}`} />
-    <p>Sport</p>
-  </div>
-  <p className='Pontos'>3</p><p>15</p><p>0</p><p>3</p><p>12</p><p>9</p><p>36</p><p>-27</p>
-</div>
-
+      {/* TABELA CLASSIFICAÇÃO */}
+      <div className="liga">
+        <div className="LigaScroll">
+          <div className="LegendaLiga LegendaLiga--header">
+            <p>Clubes</p>
+            <p className="Pontos">Pts</p>
+            <p>PJ</p>
+            <p>V</p>
+            <p>E</p>
+            <p>D</p>
+            <p>GM</p>
+            <p>GC</p>
+            <p>SG</p>
           </div>
+
+          {[...clubes]
+            .sort((a, b) => b.pontos - a.pontos || b.sg - a.sg || b.gm - a.gm)
+            .map((time, index) => (
+              <div
+                key={time.id}
+                className={`LegendaLiga ${
+                  index < 4
+                    ? "border-l-4 border-yellow-500 bg-yellow-50/5"
+                    : index >= clubes.length - 4
+                    ? "border-l-4 border-red-600 bg-red-50/5"
+                    : "border-l-4 border-transparent"
+                }`}
+              >
+                <div className="Clube flex items-center gap-2">
+                  <p className="text-gray-400 w-6 text-right">{index + 1}</p>
+                  <img
+                    src={time.escudo || "/imgs/clubes/placeholder.png"}
+                    alt={`Escudo do ${time.nome}`}
+                    className="w-6 h-6"
+                  />
+                  <p>{time.nome}</p>
+                </div>
+                <p className="Pontos font-semibold">{time.pontos}</p>
+                <p>{time.jogos}</p>
+                <p>{time.vitorias}</p>
+                <p>{time.empates}</p>
+                <p>{time.derrotas}</p>
+                <p>{time.gm}</p>
+                <p>{time.gc}</p>
+                <p className={`${time.sg > 0 ? "text-green-400" : time.sg < 0 ? "text-red-400" : "text-gray-300"}`}>
+                  {time.sg > 0 ? `+${time.sg}` : time.sg}
+                </p>
+              </div>
+            ))}
         </div>
-        <div className='proximasPartidas'>
-          <div className='proximascontainer'>
-            <div className='clubeproximas'>
-              <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`}/>
-              <p>Corinthians</p>
-              <p>VS</p>
-              <p>Cruzeiro</p>
-              <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
+      </div>
+
+      {/* PRÓXIMAS PARTIDAS */}
+      <section className="proximasPartidas flex flex-col gap-4 py-4">
+        {[
+          { timeA: Corinthians, timeB: Cruzeiro, local: 'Neo Química Arena', data: '14/09 10:30' },
+          { timeA: Cruzeiro, timeB: Palmeiras, local: 'Independência', data: '31/08 10:30' },
+          { timeA: Palmeiras, timeB: Corinthians, local: 'Allianz Parque', data: '05/10 15:00' },
+        ].map((p, i) => (
+          <div key={i} className="bg-zinc-800 rounded-lg p-4 border border-zinc-700">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <img src={p.timeA?.escudo} className="w-8 h-8" alt={p.timeA?.nome} />
+                <p>{p.timeA?.nome}</p>
+              </div>
+              <p className="text-pink-500 font-semibold">VS</p>
+              <div className="flex items-center gap-2">
+                <p>{p.timeB?.nome}</p>
+                <img src={p.timeB?.escudo} className="w-8 h-8" alt={p.timeB?.nome} />
+              </div>
             </div>
-            <div className='informacoes'>
-              <div className='Local'>
-                <img src={mappin} alt="" />
-                <p>Neo Quimica Arena</p>
-              </div>
-              <div className='Hora'>
-                <img src={clock} alt="" />
-                <p>14/09 10:30</p>
-              </div>
-            </div>
-          </div>
-          <div className='proximascontainer'>
-            <div className='clubeproximas'>
-              <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
-              <p>Cruzeiro</p>
-              <p>VS</p>
-              <p>Corinthians</p>
-              <img src={Corinthians?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Corinthians?.nome || 'Corinthians'}`}/>
-            </div>
-            <div className='informacoes'>
-              <div className='Local'>
-                <img src={mappin} alt="" />
-                <p>Independência</p>
-              </div>
-              <div className='Hora'>
-                <img src={clock} alt="" />
-                <p>07/09 10:30</p>
-              </div>
+            <div className="flex justify-between mt-2 text-sm text-gray-400">
+              <span className="flex items-center gap-1"><img src={mappin} className="w-4" /> {p.local}</span>
+              <span className="flex items-center gap-1"><img src={clock} className="w-4" /> {p.data}</span>
             </div>
           </div>
-          <div className='proximascontainer'>
-            <div className='clubeproximas'>
-              <img src={Cruzeiro?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Cruzeiro?.nome || 'Cruzeiro'}`}/>
-              <p>Cruzeiro</p>
-              <p>VS</p>
-              <p>Palmeiras</p>
-              <img src={Palmeiras?.escudo || '/imgs/clubes/placeholder.png'}alt={`Escudo do ${Palmeiras?.nome || 'Palmeiras'}`}/>
-            </div>
-            <div className='informacoes'>
-              <div className='Local'>
-                <img src={mappin} alt="" />
-                <p>Independência</p>
-              </div>
-              <div className='Hora'>
-                <img src={clock} alt="" />
-                <p>31/08 10:30</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/to-Ry1utIlE?si=SmLgAR74zgTPs7he" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen className='video'></iframe>
+        ))}
+      </section>
+
+      {/* VÍDEO */}
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/to-Ry1utIlE?si=SmLgAR74zgTPs7he"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        className="video rounded-lg overflow-hidden shadow-lg border border-zinc-700"
+      ></iframe>
     </main>
-    </>
-  )
+  );
 }
 
-export default Home
+export default Home;
