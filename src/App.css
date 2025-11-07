@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* =========================
-   TOKENS / BASE
-========================= */
 :root{
   --nav-h: 4rem;
   --aside-w: 5rem;
@@ -21,7 +18,6 @@
   --space-2: 1rem;
 }
 
-/* Reset essencial */
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -35,7 +31,6 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 #root { width: 100%; min-height: 100vh; }
 
-/* Fonte local (se existir) */
 @font-face{
   font-family: "Roboto";
   src: url("/Fontes/Roboto/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
@@ -44,9 +39,6 @@ img { display: block; max-width: 100%; height: auto; }
   font-display: swap;
 }
 
-/* =========================
-   NAV
-========================= */
 nav{
   display: flex; align-items: center; gap: 1rem;
   height: var(--nav-h); width: 100%;
@@ -73,9 +65,6 @@ nav{
 }
 .PerfilDiv img{ width: 3rem; height: 3rem; border-radius: 50%; }
 
-/* =========================
-   LAYOUT PRINCIPAL
-========================= */
 main{
   display: grid; width: 100%; height: 100%;
   gap: var(--gap); padding: 0 5%;
@@ -98,15 +87,11 @@ main{
   margin: 1rem 0;
 }
 
-/* =========================
-   BLOCOS / CARDS
-========================= */
 .video{
   grid-area: video; width: 100%; height: 100%;
   color: #000; border-radius: var(--radius);
 }
 
-/* Último jogo */
 .ultimoJogo{
   grid-area: ultimojogo;
   display: flex; align-items: center; justify-content: center;
@@ -123,7 +108,6 @@ main{
   display: flex; align-items: center; justify-content: center; gap: 1rem;
 }
 
-/* Próximas partidas */
 .proximasPartidas{
   grid-area: partidas; display: flex; flex-direction: column;
   gap: .5rem; width: 100%; height: 100%;
@@ -146,7 +130,6 @@ main{
   background: wheat;
 }
 
-/* Thumbnail destaque */
 .thumbnail{
   grid-area: Thumbnail;
   display: flex; align-items: center; justify-content: center;
@@ -159,12 +142,10 @@ main{
 .thumbnailtext h1{ font-size: 2rem; font-weight: 700; }
 .thumbnailtext h2{ font-size: 1.125rem; font-weight: 700; }
 
-/* Info linha */
 .informacoes{ display: flex; align-items: center; justify-self: center; gap: 1rem; }
 .informacoes img{ width: 18px; height: 18px; }
 .informacoes div{ display: flex; align-items: center; justify-content: center; gap: .5rem; }
 
-/* Placa (ads / slideshow tem seu CSS próprio) */
 .placa{
   grid-area: placa; width: 100%; height: 100%;
   display: flex;
@@ -194,23 +175,20 @@ main{
   cursor: pointer;
   background-color: #EE4D9B;
 }
-/* =========================
-   LIGA / TABELA
-========================= */
+
 .liga{
   grid-area: liga;
-  display: grid; grid-template-rows: auto 1fr; /* header + corpo rolável */
+  display: grid; grid-template-rows: auto 1fr;
   gap: var(--space-1);
   width: 100%; height: 100%;
   padding: 1rem .1rem .1rem;
   background: var(--clr-panel); color: var(--clr-muted);
   border: 1px solid var(--clr-border); border-radius: var(--radius);
-  max-height: 360px; /* limite visual (ajuste se preciso) */
+  max-height: 360px;
 }
 .liga p{ font-size: 12px; }
 .liga .Pontos{ color: #fff; font-weight: 700; }
 
-/* Cabeçalho e linhas */
 .LegendaLiga{
   display: grid; align-items: center; width: 100%;
   grid-template-columns: 5fr repeat(8, 1fr);
@@ -221,7 +199,6 @@ main{
 .LegendaLiga img{ width: 12px; height: 12px; background: transparent; }
 .LegendaLiga .Clube{ display: flex; align-items: center; gap: .5rem; }
 
-/* Header fixo + corpo com scroll */
 .LegendaLiga--header{
   position: sticky; top: 0; z-index: 2;
   background: var(--clr-panel);
@@ -229,15 +206,12 @@ main{
 .LigaScroll{
   overflow-y: auto; padding-right: .25rem; min-height: 0;
 }
-/* scrollbar */
+
 .LigaScroll::-webkit-scrollbar{ width: 8px; }
 .LigaScroll::-webkit-scrollbar-track{ background: #0c0c0c; border-radius: 8px; }
 .LigaScroll::-webkit-scrollbar-thumb{ background: #565656; border-radius: 8px; }
 .LigaScroll{ scrollbar-width: thin; scrollbar-color: #565656 #0c0c0c; }
 
-/* =========================
-   PÁGINA DE CLUBE
-========================= */
 .ClubeMain{
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: .25fr 1fr .5fr 2.25fr;
@@ -258,7 +232,6 @@ main{
 }
 .clubeicon img{ width: 5rem; height: 5rem; }
 
-/* Thumbnail Jogadoras */
 .ThumbnailJogadoras{
   grid-area: destaque;
   display: flex; align-items: center;
@@ -270,7 +243,6 @@ main{
 .ThumbnailJogadoras img{ width: 4rem; height: 100%; object-fit: contain; }
 .ThumbnailJogadoras h1{ font-weight: 600; font-size: 36px; }
 
-/* Listas de jogadoras */
 .Jogadoras{ grid-area: jogadoras; width: 100%; height: 100%; }
 .JogadorasLegenda{
   width: 100%; height: 2.5rem; padding: .25rem;
@@ -289,9 +261,6 @@ main{
 }
 .JogadorasTemplate img{ width: 3rem; height: 3rem; object-fit: cover; }
 
-/* =========================
-   LOGIN
-========================= */
 .LoginMain{
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
@@ -322,9 +291,6 @@ main{
   grid-area: term; display: flex; align-items: center; gap: 5rem;
 }
 
-/* =========================
-   SOBRE NÓS
-========================= */
 .SobreNosMain{
   grid-template-columns: 2fr 2fr;
   grid-template-rows: .25fr 3.5fr .25fr;
@@ -342,9 +308,6 @@ main{
 }
 .TextHistoria{ grid-area: text; width: 100%; height: 32rem; }
 
-/* =========================
-   DROPDOWN DA BUSCA
-========================= */
 .search-results{
   position: absolute; top: calc(50% + 1.25rem); left: 50%; transform: translateX(-50%);
   width: 95%; max-height: 60vh; overflow: auto;
@@ -363,9 +326,6 @@ main{
 .search-item__label{ font-weight: 700; }
 .search-item__sub{ opacity: .7; font-size: .875rem; }
 
-/* =========================
-   LISTA CLUBES (SCROLL)
-========================= */
 .Clubes--scrollY{
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: .75rem; max-height: 420px; overflow-y: auto; padding-right: .25rem;
@@ -377,15 +337,12 @@ main{
 .Clubes--scrollY{ scrollbar-width: thin; scrollbar-color: #565656 #101010; }
 .clubeicon img{ width: 64px; height: 64px; object-fit: contain; }
 .clubeicon p{ margin-top: .35rem; font-size: .9rem; }
-/* Estado dos slides */
 .slider { display: none; }
 .slider.on { display: block; }
 
-/* Se quiser transição “fade” sem inventar classe */
 .slider { opacity: 0; transition: opacity .35s ease; }
 .slider.on { display: block; opacity: 1; }
 
-/* Botões (se não houver estilo) */
 .prev-button, .next-button{
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 2rem; height: 2rem; display: grid; place-items: center;
@@ -395,10 +352,8 @@ main{
 .prev-button{ left: .5rem; }
 .next-button{ right: .5rem; }
 
-/* Garanta que os containers são position:relative
-   (placa e HistoriaSlideshow já existem no seu CSS; adicione se faltar) */
 .placa, .HistoriaSlideshow{ position: relative; overflow: hidden; }
-/* ====== AUTH / LOGIN ====== */
+
 .AuthMain{
   min-height: calc(100vh - var(--nav-h));
   padding: 2rem 1rem;
@@ -434,7 +389,6 @@ main{
   gap: 1rem;
 }
 
-/* Se já existir .field no seu CSS, isso só refina */
 .field label{
   color: #bbb;
   font-size: .9rem;
@@ -456,7 +410,6 @@ main{
   border-color: var(--clr-destaque);
 }
 
-/* Avatar */
 .AvatarRow{
   display: flex;
   align-items: center;
@@ -484,7 +437,6 @@ main{
 }
 .btnGhost:hover{ background: #1a1a1a; border-color: #777; }
 
-/* Ações (já existe .actions no seu CSS; isso só garante espaçamento) */
 .actions{
   display: flex;
   gap: .75rem;
@@ -492,7 +444,6 @@ main{
   padding-top: .25rem;
 }
 
-/* Rodapé / troca de modo */
 .AuthFooter{
   display: flex;
   justify-content: center;
@@ -510,35 +461,26 @@ main{
 
 .small{ font-size: .85rem; }
 
-/* Light theme refinamentos (opcional) */
 html[data-theme="light"] .AuthCard{ background:#fff; border-color:#e5e7eb; }
 html[data-theme="light"] .field input{ background:#fff; color:#111827; border-color:#d0d5dd; }
 html[data-theme="light"] .btnGhost:hover{ background:#f3f4f6; border-color:#d1d5db; }
 
-/* Responsivo */
 @media (max-width: 560px){
   .AuthCard{ padding: 1rem; }
   .AvatarPreview{ width: 64px; height: 64px; }
   .AuthHeader h1{ font-size: 1.35rem; }
 }
-/* =========================
-   SAFE: evitar scroll lateral “fantasma”
-========================= */
+
 html, body, #root, main { max-width: 100%; overflow-x: hidden; }
 main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
 
-/* =========================
-   Tablet (≤ 1024px)
-========================= */
 @media (max-width: 1024px) {
-  /* NAV */
   nav { gap: .75rem; padding: 0 .75rem; }
   .Nav-Link-Div { width: auto; gap: .75rem; }
   .search-bar-Div { width: 50%; }
   .PerfilDiv { width: auto; gap: .75rem; font-size: 1rem; }
   .PerfilDiv img { width: 2.5rem; height: 2.5rem; }
 
-  /* HOME (2 colunas) */
   .IndexMain {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto auto;
@@ -550,35 +492,22 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
       "video       video";
   }
 
-  /* Último jogo menor */
   .UltimoJogoContainer { gap: .75rem; }
   .UltimoJogoContainer h1 { font-size: 20px; }
   .UltimoJogoContainer img { width: 3.25rem; height: 3.25rem; }
-
-  /* Liga: cabeçalho compacto */
   .liga { max-height: 320px; }
   .liga p { font-size: 11px; }
   .LegendaLiga { grid-template-columns: 4fr repeat(8, 1fr); }
-
-  /* Próximas partidas / vídeo */
   .proximascontainer { height: 4.5rem; }
   .clubeproximas { gap: 1.25rem; }
-
-  /* Clubes (grid) */
   .Clubes { grid-template-columns: repeat(3, 1fr); gap: .75rem; }
   .clubeicon img { width: 4.25rem; height: 4.25rem; }
-
-  /* Thumbnail Jogadoras mais apertado */
   .ThumbnailJogadoras { gap: 15%; padding: 0 10%; }
   .ThumbnailJogadoras h1 { font-size: 28px; }
   .ThumbnailJogadoras img { width: 3.25rem; }
-
-  /* Lista Jogadoras: permite rolar horizontalmente quando apertar */
   .Jogadoras { overflow-x: auto; }
   .JogadorasLegenda,
   .JogadorasTemplate { min-width: 720px; }
-
-  /* CLUBE (2 colunas) */
   .ClubeMain {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto 1fr;
@@ -588,7 +517,6 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
       "jogadoras   liga";
   }
 
-  /* SOBRE NÓS (colocar slideshow e texto emparelhados) */
   .SobreNosMain {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
@@ -601,11 +529,7 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
   .TextHistoria { height: 26rem; }
 }
 
-/* =========================
-   Celular (≤ 680px)
-========================= */
 @media (max-width: 680px) {
-  /* NAV empilhada */
   nav { flex-wrap: wrap; height: auto; gap: .5rem; padding: .5rem .75rem; }
   .Nav-Link-Div { order: 1; width: 100%; justify-content: center; gap: .75rem; }
   .search-bar-Div { order: 3; width: 100%; height: auto; }
@@ -613,7 +537,6 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
   .PerfilDiv { order: 2; width: 100%; justify-content: center; gap: .5rem; }
   .PerfilDiv img { width: 2rem; height: 2rem; }
 
-  /* HOME (1 coluna) */
   .IndexMain {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto auto;
@@ -625,32 +548,21 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
       "partidas"
       "placa"
       'video';
-    /* vídeo pode ficar de fora no mobile ou abaixo */
   }
-
-  /* Último Jogo compacto */
   .UltimoJogoContainer { gap: .5rem; padding: .5rem; }
   .UltimoJogoContainer h1 { font-size: 18px; }
   .UltimoJogoContainer img { width: 2.5rem; height: 2.5rem; }
-
-  /* Liga: mais baixa e com fonte menor */
   .liga { max-height: 280px; padding-top: .5rem; }
   .liga p { font-size: 10px; }
   .LegendaLiga { grid-template-columns: 3fr repeat(8, 1fr); }
   .LigaScroll { padding-right: .15rem; }
-
-  /* Próximas partidas / placa */
   .proximascontainer { height: auto; padding: .5rem; }
   .clubeproximas { gap: .75rem; margin-left: 0; }
   .clubeproximas img { width: 2.25rem; height: 2.25rem; }
-
-  /* Thumbnail / destaque */
   .thumbnail { gap: 10%; padding: 1rem; }
   .thumbnailtext img { width: 3.5rem; height: 3.5rem; }
   .thumbnailtext h1 { font-size: 1.5rem; }
   .thumbnailtext h2 { font-size: 1rem; }
-
-  /* CLUBE (1 coluna) */
   .ClubeMain {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
@@ -664,7 +576,6 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
   .Clubes { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
   .clubeicon img { width: 3.5rem; height: 3.5rem; }
 
-  /* Thumbnail Jogadoras empilhada */
   .ThumbnailJogadoras {
     flex-direction: column;
     gap: .75rem;
@@ -674,13 +585,11 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
   .ThumbnailJogadoras h1 { font-size: 22px; }
   .ThumbnailJogadoras img { width: max-content; height: auto; }
 
-  /* Lista Jogadoras: rolagem horizontal garantida */
   .Jogadoras { overflow-x: auto; }
   .JogadorasLegenda,
   .JogadorasTemplate { min-width: 640px; }
   .JogadorasTemplate img { width: 2.5rem; height: 2.5rem; }
 
-  /* SOBRE NÓS (1 coluna) */
   .SobreNosMain {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
@@ -692,19 +601,14 @@ main, .IndexMain, .ClubeMain, .SobreNosMain, .liga { min-width: 0; }
   .HistoriaSlideshow { width: 100%; height: 18rem; }
   .TextHistoria { height: auto; margin-top: .75rem; }
 
-  /* Dropdown busca mais contido */
   .search-results {
     width: 92%;
     top: calc(100% + .5rem);
   }
 
-  /* Slider botões menores */
   .prev-button, .next-button { width: 1.75rem; height: 1.75rem; }
 }
 
-/* =========================
-   Pequenos (≤ 400px)
-========================= */
 @media (max-width: 400px) {
   .Nav-Link { margin: 0 .25rem; }
   .UltimoJogoContainer h1 { font-size: 16px; }

@@ -1,4 +1,3 @@
-// ======== IMPORTS ========
 import AmazoniaEscudo from './imgs/clubes/3b.png';
 import AmericaEscudo from './imgs/clubes/AmericaMineiro.png';
 import BahiaEscudo from './imgs/clubes/Bahia.png'; 
@@ -16,13 +15,11 @@ import RedBullEscudo from './imgs/clubes/RedBull.png';
 import SaoPauloEscudo from './imgs/clubes/SãoPaulo.png'; 
 import SportEscudo from './imgs/clubes/Sport.png';
 
-// Jogadoras
 import TamiresFace from './imgs/jogadoras/tamires.jpg';
 import CristianeFace from './imgs/jogadoras/cristiane.jpg';
 import DudaFace from './imgs/jogadoras/duda-sampaio.jpg';
 
 
-// ======== CLUBES ========
 export const clubes = [ 
   { id: "3b", nome: "3B da Amazônia", escudo: AmazoniaEscudo, estadio: "Ismael Benigno (Colina)", fundacao: "2017", cidade: "Manaus/AM", pontos: 7, jogos: 15, vitorias: 2, empates: 1, derrotas: 12, gm: 11, gc: 53, sg: -42 },
   { id: "ame", nome: "América Mineiro", escudo: AmericaEscudo, estadio: "Independência", fundacao: "1912", cidade: "Belo Horizonte/MG", pontos: 19, jogos: 15, vitorias: 5, empates: 4, derrotas: 6, gm: 18, gc: 20, sg: -2 },
@@ -43,7 +40,6 @@ export const clubes = [
 ];
 
 
-// ======== JOGADORAS ========
 export const jogadoras = [
   { id: "tamires", nome: "Tamires Cássia Dias", foto: TamiresFace, posicao: "Lateral-esquerda", time: "Corinthians", idade: 37, jogos: 12, gols: 3, assistencias: 5, nacionalidade: "Brasil", numero: 37, altura: "1,61 m" },
   { id: "duda-sampaio", nome: "Duda Sampaio", foto: DudaFace, posicao: "Meia", time: "Corinthians", idade: 24, jogos: 14, gols: 4, assistencias: 7, nacionalidade: "Brasil", numero: 27, altura: "1,69 m" },
@@ -51,7 +47,6 @@ export const jogadoras = [
 ];
 
 
-// ======== PARTIDAS (últimos e próximos jogos) ========
 export const partidas = [
   {
     id: 1,
@@ -86,7 +81,6 @@ export const partidas = [
 ];
 
 
-// ======== SLIDER ========
 const slides = document.querySelectorAll('.slider');
 const btnPrev = document.querySelector('.prev-button');
 const btnNext = document.querySelector('.next-button');

@@ -59,12 +59,10 @@ function Home() {
   return (
     <main className="IndexMain">
 
-      {/* HEADER SUPERIOR */}
       <header className="header flex justify-end items-center w-full h-16 px-8 text-white">
         <a href="/clubes" className="text-pink-500 font-bold hover:underline">Avançar</a>
       </header>
 
-      {/* SLIDER */}
       <div className="placa relative w-full overflow-hidden" ref={placaRef}>
         <div className="slider"><img src={Propaganda1} alt="Anúncio 1" className="w-full object-cover" /></div>
         <div className="slider"><img src={Propaganda2} alt="Anúncio 2" className="w-full object-cover" /></div>
@@ -74,7 +72,6 @@ function Home() {
         <button className="next-button" aria-label="Próximo">›</button>
       </div>
 
-      {/* PLACAR MAIOR SUPERIOR ESQUERDO */}
       <section className="ultimojogo flex items-center justify-center py-8">
         <div className="flex items-center justify-center border-2 border-pink-500 rounded-2xl px-8 py-5 gap-6 bg-zinc-800 text-white shadow-lg">
           <img src={Corinthians?.escudo} alt="Corinthians" className="w-14 h-14" />
@@ -88,7 +85,6 @@ function Home() {
       </section>
 
 
-      {/* THUMBNAIL CENTRAL ROSA */}
       <div className="thumbnail bg-pink-600 text-white rounded-3xl mx-auto my-6 py-8 px-10 max-w-5xl text-center shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <div className="flex flex-col items-center">
@@ -117,7 +113,6 @@ function Home() {
       </div>
 
 
-      {/* TABELA CLASSIFICAÇÃO */}
       <div className="liga">
         <div className="LigaScroll">
           <div className="LegendaLiga LegendaLiga--header">
@@ -169,7 +164,6 @@ function Home() {
         </div>
       </div>
 
-      {/* PRÓXIMAS PARTIDAS */}
       <section className="proximasPartidas flex flex-col gap-4 py-4">
         {[
           { timeA: Corinthians, timeB: Cruzeiro, local: 'Neo Química Arena', data: '14/09 10:30' },
@@ -196,7 +190,6 @@ function Home() {
         ))}
       </section>
 
-      {/* VÍDEO */}
       <iframe
         width="560"
         height="315"
