@@ -1,112 +1,126 @@
-import AmazoniaEscudo from './imgs/clubes/3b.png';
-import AmericaEscudo from './imgs/clubes/AmericaMineiro.png';
-import BahiaEscudo from './imgs/clubes/Bahia.png'; 
-import CorinthiansEscudo from './imgs/clubes/Corinthians.png';
-import CruzeiroEscudo from './imgs/clubes/Cruzeiro.png';
-import FerroviariaEscudo from './imgs/clubes/Ferroviaria.png';
-import FlamengoEscudo from './imgs/clubes/Flamengo.png';
-import FluminenseEscudo from './imgs/clubes/Fluminense.png';
-import GremioEscudo from './imgs/clubes/Grêmio.png';
-import InterEscudo from './imgs/clubes/Internacional.png';
-import JuventudeEscudo from './imgs/clubes/Juventude.png'; 
-import PalmeirasEscudo from './imgs/clubes/Palmeiras.png'; 
-import RealEscudo from './imgs/clubes/realBrasilia.avif'; 
-import RedBullEscudo from './imgs/clubes/RedBull.png'; 
-import SaoPauloEscudo from './imgs/clubes/SãoPaulo.png'; 
-import SportEscudo from './imgs/clubes/Sport.png';
+import cor from './imgs/clubes/Corinthians.png';
+import cruze from './imgs/clubes/Cruzeiro.png';
+import pal from './imgs/clubes/Palmeiras.png';
+import sao from './imgs/clubes/SãoPaulo.png';
+import ame from './imgs/clubes/AmericaMineiro.png';
+import bah from './imgs/clubes/Bahia.png';
+import fla from './imgs/clubes/Flamengo.png';
+import flu from './imgs/clubes/Fluminense.png';
+import fer from './imgs/clubes/Ferroviaria.png';
+import gre from './imgs/clubes/Grêmio.png';
+import int from './imgs/clubes/Internacional.png';
+import rea from './imgs/clubes/realBrasilia.avif';
+import rbb from './imgs/clubes/RedBull.png';
+import spo from './imgs/clubes/Sport.png';
+import juv from './imgs/clubes/Juventude.png';
+import amz from './imgs/clubes/3b.png';
 
-import TamiresFace from './imgs/jogadoras/tamires.jpg';
-import CristianeFace from './imgs/jogadoras/cristiane.jpg';
-import DudaFace from './imgs/jogadoras/duda-sampaio.jpg';
+import tamires from './imgs/jogadoras/tamires.jpg';
+import dudaSampaio from './imgs/jogadoras/duda-sampaio.jpg';
+import cristiane from './imgs/jogadoras/cristiane.jpg';
+import gabiPortilho from './imgs/jogadoras/gabi-portilho.jpg';
+import leticia from './imgs/jogadoras/leticia.jpg';
+import biaZaneratto from './imgs/jogadoras/bia-zaneratto.jpg';
+import ariBorges from './imgs/jogadoras/ari-borges.jpg';
+import anaVitoria from './imgs/jogadoras/ana-vitoria.jpg';
+import carolBaiana from './imgs/jogadoras/carol-baiana.jpg';
+import dudaSantos from './imgs/jogadoras/duda-santos.jpg';
+import brunaBenites from './imgs/jogadoras/bruna-benites.jpg';
+import karlaAlves from './imgs/jogadoras/karla-alves.jpg';
+import luanaBertolucci from './imgs/jogadoras/luana-bertolucci.jpg';
+import anaCarolina from './imgs/jogadoras/ana-carolina.jpg';
+import yasmin from './imgs/jogadoras/yasmin.jpg';
+import amanda from './imgs/jogadoras/amanda.jpg';
 
+export const escudos = {
+  "Corinthians": cor,
+  "Cruzeiro": cruze,
+  "Palmeiras": pal,
+  "São Paulo": sao,
+  "América Mineiro": ame,
+  "Bahia": bah,
+  "Flamengo": fla,
+  "Fluminense": flu,
+  "Ferroviária": fer,
+  "Grêmio": gre,
+  "Internacional": int,
+  "Real Brasília": rea,
+  "Red Bull Bragantino": rbb,
+  "Sport": spo,
+  "Juventude": juv,
+  "3B da Amazônia": amz
+};
 
-export const clubes = [ 
-  { id: "3b", nome: "3B da Amazônia", escudo: AmazoniaEscudo, estadio: "Ismael Benigno (Colina)", fundacao: "2017", cidade: "Manaus/AM", pontos: 7, jogos: 15, vitorias: 2, empates: 1, derrotas: 12, gm: 11, gc: 53, sg: -42 },
-  { id: "ame", nome: "América Mineiro", escudo: AmericaEscudo, estadio: "Independência", fundacao: "1912", cidade: "Belo Horizonte/MG", pontos: 19, jogos: 15, vitorias: 5, empates: 4, derrotas: 6, gm: 18, gc: 20, sg: -2 },
-  { id: "bah", nome: "Bahia", escudo: BahiaEscudo, estadio: "Arena Fonte Nova", fundacao: "1931", cidade: "Salvador/BA", pontos: 24, jogos: 15, vitorias: 7, empates: 3, derrotas: 5, gm: 26, gc: 22, sg: 4 },
-  { id: "cor", nome: "Corinthians", escudo: CorinthiansEscudo, estadio: "Neo Química Arena", fundacao: "1910", cidade: "São Paulo/SP", pontos: 34, jogos: 15, vitorias: 10, empates: 4, derrotas: 1, gm: 46, gc: 12, sg: 34 },
-  { id: "cru", nome: "Cruzeiro", escudo: CruzeiroEscudo, estadio: "Mineirão", fundacao: "1921", cidade: "Belo Horizonte/MG", pontos: 36, jogos: 15, vitorias: 11, empates: 3, derrotas: 1, gm: 35, gc: 15, sg: 20 },
-  { id: "fer", nome: "Ferroviária", escudo: FerroviariaEscudo, estadio: "Fonte Luminosa", fundacao: "1950", cidade: "Araraquara/SP", pontos: 25, jogos: 15, vitorias: 7, empates: 4, derrotas: 4, gm: 24, gc: 16, sg: 8 },
-  { id: "fla", nome: "Flamengo", escudo: FlamengoEscudo, estadio: "Maracanã", fundacao: "1895", cidade: "Rio de Janeiro/RJ", pontos: 27, jogos: 15, vitorias: 8, empates: 3, derrotas: 4, gm: 31, gc: 19, sg: 12 },
-  { id: "flu", nome: "Fluminense", escudo: FluminenseEscudo, estadio: "Maracanã", fundacao: "1902", cidade: "Rio de Janeiro/RJ", pontos: 18, jogos: 15, vitorias: 4, empates: 6, derrotas: 5, gm: 18, gc: 20, sg: -2 },
-  { id: "gre", nome: "Grêmio", escudo: GremioEscudo, estadio: "Arena do Grêmio", fundacao: "1903", cidade: "Porto Alegre/RS", pontos: 17, jogos: 15, vitorias: 3, empates: 8, derrotas: 4, gm: 23, gc: 21, sg: 2 },
-  { id: "int", nome: "Internacional", escudo: InterEscudo, estadio: "Beira-Rio", fundacao: "1909", cidade: "Porto Alegre/RS", pontos: 14, jogos: 15, vitorias: 3, empates: 5, derrotas: 7, gm: 17, gc: 29, sg: -12 },
-  { id: "juv", nome: "Juventude", escudo: JuventudeEscudo, estadio: "Alfredo Jaconi", fundacao: "1913", cidade: "Caxias do Sul/RS", pontos: 10, jogos: 15, vitorias: 2, empates: 4, derrotas: 9, gm: 10, gc: 27, sg: -17 },
-  { id: "pal", nome: "Palmeiras", escudo: PalmeirasEscudo, estadio: "Allianz Parque", fundacao: "1914", cidade: "São Paulo/SP", pontos: 30, jogos: 15, vitorias: 9, empates: 3, derrotas: 3, gm: 38, gc: 20, sg: 18 },
-  { id: "rea", nome: "Real Brasília", escudo: RealEscudo, estadio: "Defelê", fundacao: "1996 (Real FC) / 2016 (atual nome)", cidade: "Brasília/DF", pontos: 12, jogos: 15, vitorias: 3, empates: 3, derrotas: 9, gm: 15, gc: 36, sg: -21 },
-  { id: "rbb", nome: "Red Bull Bragantino", escudo: RedBullEscudo, estadio: "Nabi Abi Chedid", fundacao: "1928", cidade: "Bragança Paulista/SP", pontos: 20, jogos: 15, vitorias: 5, empates: 5, derrotas: 5, gm: 20, gc: 16, sg: 4 },
-  { id: "sao", nome: "São Paulo", escudo: SaoPauloEscudo, estadio: "Morumbi", fundacao: "1930", cidade: "São Paulo/SP", pontos: 33, jogos: 15, vitorias: 10, empates: 3, derrotas: 2, gm: 31, gc: 10, sg: 21 },
-  { id: "spo", nome: "Sport", escudo: SportEscudo, estadio: "Ilha do Retiro", fundacao: "1905", cidade: "Recife/PE", pontos: 3, jogos: 15, vitorias: 0, empates: 3, derrotas: 12, gm: 9, gc: 36, sg: -27 },
-];
+export const fotosJogadoras = {
+  "Tamires Cássia Dias": tamires,
+  "Duda Sampaio": dudaSampaio,
+  "Cristiane Rozeira": cristiane,
+  "Gabi Portilho": gabiPortilho,
+  "Letícia Izidoro": leticia,
+  "Bia Zaneratto": biaZaneratto,
+  "Ari Borges": ariBorges,
+  "Ana Vitória": anaVitoria,
+  "Carol Baiana": carolBaiana,
+  "Duda Santos": dudaSantos,
+  "Bruna Benites": brunaBenites,
+  "Karla Alves": karlaAlves,
+  "Luana Bertolucci": luanaBertolucci,
+  "Ana Carolina": anaCarolina,
+  "Yasmim Assis Ribeiro": yasmin,
+  "Amanda Gutierres": amanda
+};
 
+export async function fetchClubes() {
+  const res = await fetch('https://690d2f51a6d92d83e850b780.mockapi.io/soccerapi/api/v1/times');
+  if (!res.ok) throw new Error('Erro ao buscar clubes');
+  const data = await res.json();
 
-export const jogadoras = [
-  { id: "tamires", nome: "Tamires Cássia Dias", foto: TamiresFace, posicao: "Lateral-esquerda", time: "Corinthians", idade: 37, jogos: 12, gols: 3, assistencias: 5, nacionalidade: "Brasil", numero: 37, altura: "1,61 m" },
-  { id: "duda-sampaio", nome: "Duda Sampaio", foto: DudaFace, posicao: "Meia", time: "Corinthians", idade: 24, jogos: 14, gols: 4, assistencias: 7, nacionalidade: "Brasil", numero: 27, altura: "1,69 m" },
-  { id: "cristiane", nome: "Cristiane Rozeira", foto: CristianeFace, posicao: "Atacante", time: "Flamengo", idade: 40, jogos: 13, gols: 9, assistencias: 2, nacionalidade: "Brasil", numero: 11, altura: "1,70 m" }
-];
+  return data.map((clube) => ({
+    ...clube,
+    escudo: escudos[clube.nome] || '/imgs/clubes/placeholder.png',
+  }));
+}
 
+export async function fetchJogadoras() {
+  const res = await fetch('https://690d2f51a6d92d83e850b780.mockapi.io/soccerapi/api/v1/jogadoras');
+  if (!res.ok) throw new Error('Erro ao buscar jogadoras');
+  const data = await res.json();
 
-export const partidas = [
-  {
-    id: 1,
-    mandante: "Corinthians",
-    visitante: "Cruzeiro",
-    local: "Neo Química Arena",
-    data: "2025-10-26",
-    hora: "10:30",
-    resultado: "1x0",
-    status: "encerrado"
-  },
-  {
-    id: 2,
-    mandante: "Cruzeiro",
-    visitante: "Palmeiras",
-    local: "Independência",
-    data: "2025-11-02",
-    hora: "10:30",
-    resultado: null,
-    status: "agendado"
-  },
-  {
-    id: 3,
-    mandante: "São Paulo",
-    visitante: "Flamengo",
-    local: "Morumbi",
-    data: "2025-11-09",
-    hora: "15:00",
-    resultado: null,
-    status: "agendado"
+  return data.map((jogadora) => ({...jogadora, foto: fotosJogadoras[jogadora.nome] || jogadora.foto || '/imgs/jogadoras/placeholder.png' }));
+}
+
+export function initSlider(container, { auto = true, interval = 4000 } = {}) {
+  if (!container) return;
+  const slides = container.querySelectorAll('.slider');
+  const btnPrev = container.querySelector('.prev-button');
+  const btnNext = container.querySelector('.next-button');
+
+  let current = 0;
+  function hideSlides() {
+    slides.forEach((s) => s.classList.remove('on'));
   }
-];
+  function showSlide(i) {
+    if (!slides.length) return;
+    slides[i].classList.add('on');
+  }
+  function goTo(n) {
+    if (!slides.length) return;
+    current = (n + slides.length) % slides.length;
+    hideSlides();
+    showSlide(current);
+  }
+  function nextSlide() {
+    goTo(current + 1);
+  }
+  function prevSlide() {
+    goTo(current - 1);
+  }
 
-
-const slides = document.querySelectorAll('.slider');
-const btnPrev = document.querySelector('.prev-button');
-const btnNext = document.querySelector('.next-button');
-
-let current = 0;
-
-function hideSlides() {
-  slides.forEach(s => s.classList.remove('on'));
-}
-
-function showSlide(i) {
-  if (!slides.length) return;
-  slides[i].classList.add('on');
-}
-
-function goTo(n) {
-  if (!slides.length) return;
-  current = (n + slides.length) % slides.length;
-  hideSlides();
+  btnNext?.addEventListener('click', nextSlide);
+  btnPrev?.addEventListener('click', prevSlide);
   showSlide(current);
+
+  let timer;
+  if (auto) timer = setInterval(nextSlide, interval);
+  return () => clearInterval(timer);
 }
-
-function nextSlide() { goTo(current + 1); }
-function prevSlide() { goTo(current - 1); }
-
-btnNext?.addEventListener('click', nextSlide);
-btnPrev?.addEventListener('click', prevSlide);
-
-showSlide(current);
